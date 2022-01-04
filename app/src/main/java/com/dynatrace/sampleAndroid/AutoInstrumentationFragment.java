@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
-import com.dynatrace.android.agent.Dynatrace;
 import java.net.MalformedURLException;
 import java.net.URL;
 import okhttp3.OkHttpClient;
@@ -58,15 +57,7 @@ public class AutoInstrumentationFragment extends Fragment {
     /** 'Extend and Modify User Actions' button is pressed
     Rename the generated User Action and report several values and an event for it */
     private void onModifiableUserAction(){
-        Dynatrace.modifyUserAction(userAction -> {
-            // TODO (Renaming Auto-Actions and reporting values / events)
-            userAction.reportEvent("Reported Values represent Key:Value pairs, whereas Reported Events are a single string event");
-            userAction.reportValue("Reported value types","int, long, double, string");
 
-            userAction.reportValue("Original Action Name",userAction.getActionName());
-            userAction.setActionName("Dynatrace.modifyUserAction() example");
-
-        });
         t.toast(getActivity(), "User Action name changed from 'Touch on Extend and Modify User Actions' to 'Dynatrace.modifyUserAction() example'", Toast.LENGTH_LONG);
     }
 
@@ -74,15 +65,15 @@ public class AutoInstrumentationFragment extends Fragment {
     /** 'Caught Exception (Malformed URL)' button is pressed
     Cause an exception to be thrown (and handled via try-catch block) */
     private void onCaughtException(){
-        try {
-            URL url = new URL("httpSUPERSECRET::::::://////");
-        } catch (MalformedURLException m) {
-            // TODO (Reporting errors for Auto-Actions)
-            Dynatrace.modifyUserAction(userAction -> {
-                userAction.reportError("Malformed URL Error", m);
-            });
-            t.toast(getActivity(), "Caught Error: " + m.toString(), Toast.LENGTH_SHORT);
-        }
+//        try {
+//            URL url = new URL("httpSUPERSECRET::::::://////");
+//        } catch (MalformedURLException m) {
+//            // TODO (Reporting errors for Auto-Actions)
+//            Dynatrace.modifyUserAction(userAction -> {
+//                userAction.reportError("Malformed URL Error", m);
+//            });
+//            t.toast(getActivity(), "Caught Error: " + m.toString(), Toast.LENGTH_SHORT);
+//        }
     }
 
 
@@ -96,46 +87,46 @@ public class AutoInstrumentationFragment extends Fragment {
     /** 'Web request' button is pressed
     The User Action is created when the click occurs and the request sends after the configured delay */
     private void onWebRequest(String url, int requestDelay, int numberOfRequests) {
-        // TODO (Automatically detected web request)
-        for (int i = 1; i <= numberOfRequests; i++){
-            final int n = i;
-            Thread thread = new Thread(new Runnable(){
-                @Override
-                public void run() {
-                    try {
-                        // Sleeep this thread for (rD x n) ms where...
-                        // rD = request delay
-                        // n = nth number request between 1 and 20
-                        Thread.sleep(requestDelay * n);
-
-                        // Create the Request object with the URL
-                        Request request = new Request.Builder()
-                                .url(url)
-                                .build();
-
-                        // Send the request
-                        Response response = client.newCall(request).execute();
-                        if (response.isSuccessful()){
-                            Dynatrace.modifyUserAction(userAction -> {
-                                userAction.reportEvent("Request Number " + String.valueOf(n) + " of " + numberOfRequests + " returned successfully");
-                            });
-                        }
-
-                    } catch (Exception e) {
-                        Dynatrace.modifyUserAction(userAction -> {
-                            userAction.reportError("Automatic Web Request Error", e);
-                        });
-                    }
-
-                    if (n == numberOfRequests){
-                        getActivity().runOnUiThread(() -> {
-                            t.toast(getActivity(), "Finished sending " + String.valueOf(numberOfRequests) + " request(s)", Toast.LENGTH_SHORT);
-                        });
-                    }
-                }
-            });
-            thread.start();
-        }
+//        // TODO (Automatically detected web request)
+//        for (int i = 1; i <= numberOfRequests; i++){
+//            final int n = i;
+//            Thread thread = new Thread(new Runnable(){
+//                @Override
+//                public void run() {
+//                    try {
+//                        // Sleeep this thread for (rD x n) ms where...
+//                        // rD = request delay
+//                        // n = nth number request between 1 and 20
+//                        Thread.sleep(requestDelay * n);
+//
+//                        // Create the Request object with the URL
+//                        Request request = new Request.Builder()
+//                                .url(url)
+//                                .build();
+//
+//                        // Send the request
+//                        Response response = client.newCall(request).execute();
+//                        if (response.isSuccessful()){
+//                            Dynatrace.modifyUserAction(userAction -> {
+//                                userAction.reportEvent("Request Number " + String.valueOf(n) + " of " + numberOfRequests + " returned successfully");
+//                            });
+//                        }
+//
+//                    } catch (Exception e) {
+//                        Dynatrace.modifyUserAction(userAction -> {
+//                            userAction.reportError("Automatic Web Request Error", e);
+//                        });
+//                    }
+//
+//                    if (n == numberOfRequests){
+//                        getActivity().runOnUiThread(() -> {
+//                            t.toast(getActivity(), "Finished sending " + String.valueOf(numberOfRequests) + " request(s)", Toast.LENGTH_SHORT);
+//                        });
+//                    }
+//                }
+//            });
+//            thread.start();
+//        }
 
     }
 
@@ -203,16 +194,16 @@ public class AutoInstrumentationFragment extends Fragment {
      * @param dialogTag Tag used to determine the corresponding dialog
      */
     private void setActionName(Button button, String newActionName, String dialogTag){
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Dynatrace.modifyUserAction(userAction -> {
-                    userAction.reportValue("Original Button Text",userAction.getActionName());
-                    userAction.setActionName(newActionName);
-                });
-                helper.showDialog(getParentFragmentManager(), dialogTag);
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view){
+//                Dynatrace.modifyUserAction(userAction -> {
+//                    userAction.reportValue("Original Button Text",userAction.getActionName());
+//                    userAction.setActionName(newActionName);
+//                });
+//                helper.showDialog(getParentFragmentManager(), dialogTag);
+//            }
+//        });
     }
 
     /**

@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.dynatrace.android.agent.Dynatrace;
 
 public class InstrumentationActivity extends AppCompatActivity {
 
@@ -25,53 +21,11 @@ public class InstrumentationActivity extends AppCompatActivity {
         onReplaceFragment(findViewById(R.id.buttonFragmentAuto));
     }
 
-    /**
-     * Add a menu to the actionbar
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_items, menu);
-        return true;
-    }
 
     /**
-     * One of the automatically instrumented click listeners - Options Listener for the menu items
+     * Click listener for any button pressed on the InstrumentationActivity
      *
-     * In the InstrumentationActivity, this menu can be seen with the 3 dots in the top actionBar
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO (TASK) see 'Renaming Auto-Actions and reporting values / events'
-        /* The below switch statement gets called when a option is selected from the actionBar menu
-         in the InstrumentationActivity (the three elipses in the top-right corner on the activity)
-         for each case, report a value for the automatically detected user action to set up
-         as a session or user action property */
-        switch (item.getItemId()) {
-            case R.id.optionEndVisit:
-                Dynatrace.endVisit(); // Split your current session: Ends previous session and any new data will show up in a new session
-                break;
-            case R.id.optionStringProperty:
-                // Report a String value for the user action created by this button
-                // Create a Session Property in the UI
-                break;
-            case R.id.optionNumericProperty:
-                // Report a Numeric value for the user action created by this button
-                // Create a Numeric Property in the UI that sums the values
-                break;
-            case R.id.optionActionProperty:
-                // Report a value for the user action created by this button
-                // Create a User Action Property in the UI
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Custom click listener for buttons clicked in a fragment. Depending on the active fragment,
-     * calls the custom "onFragmentButton" method for the active fragment to handle and passes the
-     * view object
+     * Calls 'onFragmentButton' for whichever fragment is currently active
      *
      * @param view The view object of the button that was pressed
      */

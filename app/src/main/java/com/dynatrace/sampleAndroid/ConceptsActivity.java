@@ -7,8 +7,6 @@ import android.widget.ExpandableListView;
 
 public class ConceptsActivity extends AppCompatActivity {
 
-    private static final String CONCEPTS = "concepts";
-    private static final String TROUBLESHOOTING = "troubleshooting";
     private ExpandableListAdapter adapter;
     private ConceptData data;
     private int lastPosition = -1;

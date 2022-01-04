@@ -12,10 +12,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-
-import com.dynatrace.android.agent.DTXAction;
-import com.dynatrace.android.agent.Dynatrace;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -261,10 +257,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     @Override
                     public void onClick(View v) {
                         // Create 200 custom user actions to split the session
-                        for (int i =0; i<200; i++){
-                            DTXAction splitSessionAction = Dynatrace.enterAction("Action #" + String.valueOf(i));
-                            splitSessionAction.leaveAction();
-                        }
+//                        for (int i =0; i<200; i++){
+//                            DTXAction splitSessionAction = Dynatrace.enterAction("Action #" + String.valueOf(i));
+//                            splitSessionAction.leaveAction();
+//                        }
                     }
                 });
                 return;
