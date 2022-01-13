@@ -4,8 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.dynatrace.android.agent.Dynatrace;
+import com.dynatrace.android.agent.conf.DataCollectionLevel;
+import com.dynatrace.android.agent.conf.UserPrivacyOptions;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +28,14 @@ public class MainActivity extends AppCompatActivity {
         this.tooltipHelper = new TooltipHelper();
         this.toasterHelper = new Toaster();
         getSupportActionBar().setTitle("MainActivity");
+
     }
 
     /**
+     * Custom Click Listener that receives button clicks and determines which code should be
+     * executed
      *
-     * @param view
+     * @param view the view object for the button that was pressed
      */
     public void onButtonTouch(View view) {
         Intent intent;
@@ -34,39 +45,18 @@ public class MainActivity extends AppCompatActivity {
             case R.id.buttonAbout:
                 tooltipHelper.showDialog(getSupportFragmentManager(), "about");
 
-            // "Apply Tag" button is pressed
-            case R.id.buttonTagUser:
-                tagSession(((EditText) findViewById(R.id.textUserTag)).getText().toString());
-
             // "Instrumentation Sandbox" is pressed - InstrumentationActivity is started
-            case R.id.relativeLayoutInstrumentation:
-                intent = new Intent(view.getContext(), InstrumentationActivity.class);
+            case R.id.relativeLayoutAutomaticInstrumentation:
+                intent = new Intent(view.getContext(), AutomaticInstrumentationActivity.class);
                 startActivity(intent);
                 break;
 
             // "Concepts and Troubleshooting" is pressed - ConceptsActivity is started
-            case R.id.relativeLayoutConcepts:
-                intent = new Intent(view.getContext(), ConceptsActivity.class);
+            case R.id.relativeLayoutManualInstrumentation:
+                intent = new Intent(view.getContext(), ManualInstrumentationActivity.class);
                 startActivity(intent);
                 break;
         }
     }
 
-    /**
-     * Check that the user has entered a tag into the field and use it to
-     * tag the session with the Dynatrace SDK
-     */
-    private void tagSession(String tag) {
-        if (tag.length() > 0) {
-
-            // Add the code here to tag the user
-
-
-            toasterHelper.toast(MainActivity.this,"Functionality incomplete" + tag, Toast.LENGTH_LONG);
-//            toasterHelper.toast(MainActivity.this,"Session successfully tagged as: " + tag, Toast.LENGTH_LONG);
-        }
-        else {
-            toasterHelper.toast( MainActivity.this,"User tag cannot be empty, please enter a tag", Toast.LENGTH_SHORT);
-        }
-    }
 }
