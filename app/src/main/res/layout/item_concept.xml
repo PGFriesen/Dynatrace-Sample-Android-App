@@ -6,6 +6,10 @@
     android:background="@color/background_gray"
     android:orientation="vertical">
 
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
     <TextView
         android:id="@+id/textViewConcept"
         android:layout_width="match_parent"

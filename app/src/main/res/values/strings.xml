@@ -1,12 +1,142 @@
 <resources>
-<!-- Titles -->
+
+    <!-- TODO: Organize strings into the following categories -->
+    <!--
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    1. By Section
+    <string name="auto_"></string>
+    <string name="settings_"></string>
+    <string name="sdk_"></string>
+    <string name="user_data_"></string>
+
+    2. generic groupings
+    <string name="error_">An error message</string>
+    <string name="msg_">regular information message</string>
+    <string name="title_">A title, i.e. a dialog title</string>
+    <string name="action_">An action such as "Save" or "Create"</string>
+    -->
+
+    <!-- Auto-Instrumentation Strings (auto_) -->
+
+    <!-- Notes Strings (note_) -->
+
+    <!-- SDK Strings (sdk_) -->
+
+    <!-- User Data Strings (user_data_) -->
+    <string name="user_data_hint_user_tag">Enter a user tag</string>
+    <string name="user_data_apply_tag">Click to apply tag</string>
+    <string name="user_data_dcl_off">No data is collected from the user except an anonymous session
+        with a single user action for the loading of the application</string>
+    <string name="user_data_dcl_performance">Only performance data is captured. No information will be collected to identify the user</string>
+    <string name="user_data_dcl_user_behavior">All data is collected including information to track the user accross multiple visits</string>
+    <string name="user_data_off">Off</string>
+    <string name="user_data_performance">Performance</string>
+    <string name="user_data_behavior">User Behavior</string>
+
+    <!-- Error Message Strings (error_) -->
+
+    <!-- Informational message Strings (msg_) -->
+
+    <!-- Title Strings (title_) -->
+    <string name="title_how_it_works">How it works</string>
+    <string name="how_it_works">How it works</string>
+
+    <!-- Action Strings (action_) -->
+
+
+
+    <!-- ______________________________________________________________________________________ -->
+
+    <!-- Titles -->
     <string name="app_name">Dynatrace Android Tutorial</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_concepts">ConceptsActivity</string>
     <string name="title_activity_instrumentation">InstrumentationActivity</string>
+    <string name="title_activity_auto_instrumentation">AutomaticInstrumentationActivity</string>
+    <string name="title_activity_manual_instrumentation">ManualInstrumentationActivity</string>
+
+    <!-- User Actions -->
+    <string name="monitoring_user_action">User Action Monitoring</string>
+    <string name="user_action">User Action</string>
+    <string name="enter_action">Enter Action</string>
+    <string name="leave_action">Leave Action</string>
+    <string name="custom_user_action">Custom User Action</string>
+    <string name="custom_action">Custom Actions</string>
+    <string name="create_action">Create Action</string>
+    <string name="close_action">Close Action</string>
+
+    <string-array name="user_action_names">
+        <item>Next</item>
+        <item>Continue</item>
+        <item>Register</item>
+        <item>Login</item>
+        <item>Ok</item>
+        <item>Submit</item>
+    </string-array>
+
+    <string-array name="supported_user_action_sensors">
+        <item>android.view.View$OnClickListener</item>
+        <item>android.app.Activity.onOptionsItemSelected</item>
+        <item>android.view.MenuItem$OnMenuItemClickListener</item>
+        <item>android.widget.AdapterView$OnItemClickListener</item>
+        <item>android.widget.AdapterView$OnItemSelectedListener</item>
+    </string-array>
+
+    <!-- Web Requests -->
+    <string name="monitoring_web_request">Web Request Monitoring</string>
+    <string name="web_request">Send Web Request</string>
+    <string name="add_url">+ Add Endpoint</string>
+    <string name="waterfall_request">Create waterfall with many requests</string>
+    <string name="delay">0 ms</string>
+    <string name="count">1 request(s)</string>
+
+    <string-array name="supported_web_request_frameworks">
+        <item>HttpURLConnection</item>
+        <item>OkHttp: Only version 3 and 4</item>
+        <item>Apache HttpClient: Only the Android-internal HttpClient version</item>
+    </string-array>
+
+    <!-- Crash Reporting & Error Handling -->
+    <string name="crash_reporting">Crash reporting &amp; Error Handling</string>
+
+    <!-- Lifecycle -->
+    <string name="monitoring_lifecycle">Lifecycle Monitoring</string>
+
+    <!-- User Data -->
+    <string name="user_tagging">User Tagging</string>
+    <string name="user_data">User Data</string>
+    <string name="user_privacy">User Privacy and Data Collection Levels</string>
+    <string name="sdk">SDK</string>
+
+    <!-- Header Strings -->
+    <string name="fragment_header_custom_actions">Create Custom Actions &amp; add events</string>
 
 
-<!-- Header Strings -->
+    <!-- Button Strings -->
+    <string name="about">About this App</string>
+    <string name="launch">&gt;</string>
+
+
+    <!-- Labels -->
+    <string name="plugin_activity">Automatically Instrument with the Plugin</string>
+    <string name="sdk_activity">Manually Instrument with the SDK</string>
+
+
+    <!-- Preset URLs -->
+    <string-array name="url_list">
+        <item>https://dynatrace.com/support/help/how-to-use-dynatrace/real-user-monitoring/setup-and-configuration/mobile-apps</item>
+        <item>https://dynatrace.com/news/newsroom/</item>
+        <item>https://google.com/search?q=dynatrace+perform</item>
+        <item>https://bing.com/search?q=how+to+change+default+browser+to+google</item>
+        <item>https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags</item>
+        <item>https://twitter.com/Dynatrace</item>
+        <item>https://www.core77.com/posts/110412/Incredible-Shots-of-the-Breadboard-Prototype-for-the-First-iPod</item>
+        <item>https://ionicframework.com/</item>
+        <item>https://www.telerik.com/</item>
+    </string-array>
+
+
+    <!-- Header Strings -->
     <string name="tag_user">Tag your session!</string>
     <string name="session">Sessions</string>
     <string name="create_user_action">Create a Custom Action and Leave when complete</string>
@@ -17,23 +147,17 @@
     <string name="concept">Concept</string>
     <string name="caught_error">Catch Exception (Malformed URL)</string>
     <string name="reporting">Report Events and Values</string>
-    <string name="crash_reporting">Crash Reporting and Error Handling</string>
-    <string name="user_action_monitoring">User Action Monitoring</string>
-    <string name="web_request_monitoring">Web Request Monitoring</string>
     <string name="troubleshooting">Troubleshooting</string>
 
 
-<!-- Button Texts -->
-    <string name="enter_action">Enter Action</string>
-    <string name="leave_action">Leave Action</string>
+    <!-- Button Texts -->
+
     <string name="change_button_text">Replace button text</string>
     <string name="modify_user_action">Extend and Modify User Actions</string>
     <string name="apply_tag">Apply Tag</string>
     <string name="create_child_action">Create Child Action</string>
     <string name="close_child_action">Close Child action</string>
-    <string name="web_request">Send Web Request</string>
     <string name="leave_child">Leave child</string>
-    <string name="user_action">User Action</string>
     <string name="request_url">https://search.dynatrace.com/#q=Android&amp;t=All</string>
     <string name="instrumentation_banner">Instrumentation Sandbox</string>
     <string name="concepts_banner">Concepts and Troubleshooting</string>
@@ -46,31 +170,29 @@
     <string name="manual_instrumentation">Manual</string>
     <string name="question_mark">?</string>
     <string name="web_request_delay">Send Web Request(s) with a delay</string>
-    <string name="about">About this App</string>
 
 
-<!-- Hints -->
+    <!-- Hints -->
     <string name="user_action_name">Enter a name for the user action</string>
     <string name="user_tag">Enter User Tag</string>
     <string name="url">Url</string>
-    <string name="delay">0 ms</string>
     <string name="requests_to_send">1 call(s)</string>
     <string name="change_url">Specify a URL</string>
 
 
-<!-- Content Descriptions -->
-    <string name="content_description_oneAgent">Dynatrace OneAgent Logo</string>
-    <string name="content_description_dynatrace">Dynatrace Logo</string>
+    <!-- Content Descriptions -->
+    <string name="content_description_image1">Dynatrace Plugin Logo</string>
+    <string name="content_description_image2">Dynatrace SDK Logo</string>
 
 
-<!-- Menu Strings-->
+    <!-- Menu Strings-->
     <string name="session_property">Make a String session property</string>
     <string name="session_property2">Make a Numeric session property</string>
     <string name="action_property">Make a User Action Property</string>
     <string name="end_visit">End Visit</string>
 
 
-<!-- String Arrays for Concepts -->
+    <!-- String Arrays for Concepts -->
     <string-array name="session_splitting_conditions">
         <item>Application is terminated</item>
         <item>200 User Action limit reached</item>
@@ -135,7 +257,7 @@
         <item>Request is tagged with the "x-dynatrace" header</item>
     </string-array>
 
-<!-- String Arrays for Troubleshooting -->
+    <!-- String Arrays for Troubleshooting -->
     <string-array name="no_data">
         <item>Ensure the beaconUrl is reachable</item>
         <item>Check the logs for any errors or exceptions when the agent sends data to the beaconUrl</item>
@@ -190,5 +312,6 @@
         <item>Java 8+ for Android Gradle Plugin 3.1 - 4.2.2</item>
         <item>Java 11+ for Android Gradle Plugin 7.0.0+</item>
     </string-array>
+
 
 </resources>

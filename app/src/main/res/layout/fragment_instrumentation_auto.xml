@@ -8,6 +8,10 @@
     android:fillViewport="true"
     tools:context=".AutoInstrumentationFragment">
 
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
     <RelativeLayout
         android:id="@+id/scrollViewChild"
         android:layout_height="wrap_content"
@@ -17,14 +21,14 @@
             android:id="@+id/relativeLayoutUserActions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?backgroundCard">
+            style="?card">
 
             <TextView
                 android:id="@+id/textViewUserActionBanner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="?textLarge"
-                android:text="@string/user_action_monitoring" />
+                android:text="@string/monitoring_user_action" />
 
             <LinearLayout
                 android:id="@+id/linerLayoutUserAction"
@@ -89,22 +93,22 @@
             android:id="@+id/relativeLayoutWebRequests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?backgroundCard"
+            style="?card"
             android:layout_below="@+id/relativeLayoutUserActions" >
 
             <TextView
-                android:id="@+id/textviewWebRequestBanner"
+                android:id="@+id/bannerWebRequest"
+                style="?textLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?textLarge"
-                android:text="@string/web_request_monitoring" />
+                android:text="@string/monitoring_web_request" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutRequestUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="?layoutRow"
-                android:layout_below="@+id/textviewWebRequestBanner"
+                android:layout_below="@+id/bannerWebRequest"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -207,7 +211,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relativeLayoutWebRequests"
-            style="?backgroundCard" >
+            style="?card" >
 
             <TextView
                 android:id="@+id/textViewCrashReportingBanner"

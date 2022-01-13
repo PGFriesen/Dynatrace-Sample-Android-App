@@ -10,7 +10,7 @@
 
     <style name="Theme.Dynatrace.Light" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="backgroundActivityPrimary">@style/background_white_gray</item>
-        <item name="backgroundCard">@style/card_view</item>
+        <item name="card">@style/card_view</item>
         <item name="buttonDefault">@style/button_teal</item>
         <item name="buttonPicker">@style/button_white</item>
         <item name="buttonTooltip">@style/button_tooltip</item>
@@ -24,7 +24,7 @@
 
     <style name="Theme.Dynatrace.Light.Uem" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="backgroundActivityPrimary">@style/background_white_gray</item>
-        <item name="backgroundCard">@style/card_view</item>
+        <item name="card">@style/card_view</item>
         <item name="buttonDefault">@style/button_violet</item>
         <item name="buttonPicker">@style/button_white</item>
         <item name="buttonTooltip">@style/button_tooltip</item>

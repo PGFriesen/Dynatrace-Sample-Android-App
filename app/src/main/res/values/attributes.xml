@@ -2,7 +2,7 @@
 <resources>
     <attr name="backgroundActivityPrimary" format="reference"/>
     <attr name="backgroundActivitySecondary" format="reference"/>
-    <attr name="backgroundCard" format="reference"></attr>
+    <attr name="card" format="reference"></attr>
     <attr name="buttonDefault" format="reference"/>
     <attr name="buttonTooltip" format="reference"/>
     <attr name="textHeader" format="reference"/>

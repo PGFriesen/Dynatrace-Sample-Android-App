@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,82 +21,69 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutTagging"
+                android:id="@+id/relativeLayoutAbout"
+                style="?backgroundActivityPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onButtonTouch"
-                style="?backgroundActivityPrimary">
+                android:onClick="onButtonTouch">
 
                 <Button
                     android:id="@+id/buttonAbout"
+                    style="?buttonDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="?buttonDefault"
                     android:text="@string/about" />
 
-                <TextView
-                    android:id="@+id/textViewTag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="?textHeader"
-                    android:layout_below="@+id/buttonAbout"
-                    android:text="@string/tag_user"/>
 
-                <Button
-                    android:id="@+id/buttonTagUser"
-                    style="?buttonDefault"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewTag"
-                    android:onClick="onButtonTouch"
-                    android:text="@string/apply_tag" />
-
-                <EditText
-                    android:id="@+id/textUserTag"
-                    style="?editTextBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/buttonTagUser"
-                    android:layout_toEndOf="@id/buttonTagUser"
-                    android:hint="@string/user_tag"
-                    android:minHeight="48dp" />
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutInstrumentation"
+                android:id="@+id/relativeLayoutAutomaticInstrumentation"
                 style="?backgroundActivitySecondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onButtonTouch"
-                android:layout_below="@+id/relativeLayoutTagging"
-                android:clickable="true">
+                android:layout_below="@+id/relativeLayoutAbout"
+                android:clickable="true"
+                android:onClick="onButtonTouch">
+
 
                 <TextView
                     android:id="@+id/textViewInstrumentationBanner"
                     style="?textHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/instrumentation_banner" />
+                    android:text="@string/plugin_activity" />
 
                 <ImageView
-                    android:id="@+id/imageInstrumentationActivity"
+                    android:id="@+id/imageAutoInstrumentation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textViewInstrumentationBanner"
                     android:layout_centerHorizontal="true"
                     android:background="@color/background_gray"
-                    android:contentDescription="@string/content_description_oneAgent"
-                    app:srcCompat="@drawable/ic_dynatrace_shamrockgreen_700"
+                    android:contentDescription="@string/content_description_image1"
+                    app:srcCompat="@drawable/ic_plugin_connection_shamrockgreen_700"
                     app:tint="@color/dt_green" />
+
+                <TextView
+                    style="?textHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/imageAutoInstrumentation"
+                    android:text="@string/launch"
+                    android:textSize="48sp" />
+
             </RelativeLayout>
 
+
             <RelativeLayout
-                android:id="@+id/relativeLayoutConcepts"
+                android:id="@+id/relativeLayoutManualInstrumentation"
                 style="?backgroundActivityPrimary"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onButtonTouch"
-                android:layout_below="@+id/relativeLayoutInstrumentation"
+                android:layout_below="@+id/relativeLayoutAutomaticInstrumentation"
                 android:clickable="true">
 
                 <TextView
@@ -100,7 +91,7 @@
                     style="?textHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/concepts_banner" />
+                    android:text="@string/sdk_activity" />
 
                 <ImageView
                     android:id="@+id/imageConceptsActivity"
@@ -109,9 +100,18 @@
                     android:layout_below="@id/textViewConceptsBanner"
                     android:layout_centerHorizontal="true"
                     android:background="@color/background_dark_gray"
-                    android:contentDescription="@string/content_description_dynatrace"
-                    app:srcCompat="@drawable/ic_oneagent_gray_700"
+                    android:contentDescription="@string/content_description_image2"
+                    app:srcCompat="@drawable/ic_oneagent_sdk_shamrockgreen_700"
                     app:tint="@color/dt_green" />
+
+                <TextView
+                    style="?textHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/imageConceptsActivity"
+                    android:text="@string/launch"
+                    android:textSize="48sp"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

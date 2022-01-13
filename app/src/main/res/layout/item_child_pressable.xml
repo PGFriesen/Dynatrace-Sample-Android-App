@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
