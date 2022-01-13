@@ -8,221 +8,182 @@
     android:fillViewport="true"
     tools:context=".ManualInstrumentationFragment">
 
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
     <RelativeLayout
         android:id="@+id/scrollViewChild"
+        style="?card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
-        <RelativeLayout
-            android:id="@+id/relativeLayoutCreateAction"
+        <TextView
+            android:id="@+id/textFragmentHeader"
+            style="?textLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?backgroundCard">
+            android:gravity="center_horizontal"
+            android:text="@string/fragment_header_custom_actions" />
 
-            <TextView
-                android:id="@+id/textViewUserActionBanner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/create_user_action"
-                android:gravity="center_horizontal"
-                style="?textLarge" />
+        <EditText
+            android:id="@+id/editTextUserActionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textFragmentHeader"
+            style="?editTextBox"
+            android:gravity="center_horizontal"
+            android:hint="@string/user_action_name"
+            android:text="@string/custom_user_action"/>
 
-            <LinearLayout
-                android:id="@+id/linerLayoutUserAction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewUserActionBanner"
-                android:orientation="horizontal"
-                style="?layoutRow">
-
-                    <Button
-                        android:id="@+id/buttonActionHelp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:text="@string/question_mark"
-                        style="?buttonTooltip" />
-
-                    <EditText
-                        android:id="@+id/editTextUserActionName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="?editTextBox"
-                        android:hint="@string/user_action_name"/>
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextUserActionName"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
             <Button
                 android:id="@+id/buttonEnterAction"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 style="?buttonDefault"
-                android:layout_below="@+id/linerLayoutUserAction"
-                android:text="@string/enter_action"
-                android:onClick="onFragmentButton"/>
+                android:onClick="onFragmentButton"
+                android:text="@string/enter_action" />
 
             <Button
                 android:id="@+id/buttonLeaveAction"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 style="?buttonDefault"
-                android:layout_below="@+id/buttonEnterAction"
                 android:enabled="false"
                 android:text="@string/leave_action"
                 android:onClick="onFragmentButton"/>
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayoutChildrenActions"
+        <LinearLayout
+            android:id="@+id/row2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayoutCreateAction"
-            style="?backgroundCard">
+            android:layout_below="@+id/row1"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
-            <TextView
-                android:id="@+id/textViewChildActionBanner"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/buttonChildAction"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/add_children"
-                android:gravity="center_horizontal"
-                style="?textLarge" />
+                style="?buttonDefault"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:text="@string/create_child_action"
+                android:enabled="false"
+                android:onClick="onFragmentButton" />
 
-            <EditText
-                android:id="@+id/editTextURL"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/textViewChildActionBanner"
-                android:hint="@string/change_url"
-                android:inputType="textUri"
-                android:text="@string/request_url"
-                style="?editTextBox" />
-
-            <LinearLayout
-                android:id="@+id/linearLayoutWebRequests"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/buttonCloseChild"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextURL"
-                android:orientation="horizontal"
-                style="?layoutRow">
+                style="?buttonDefault"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:enabled="false"
+                android:text="@string/close_child_action"
+                android:onClick="onFragmentButton" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonManualWebRequestHelp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:text="@string/question_mark"
-                    style="?buttonTooltip"/>
+<!--        <TextView-->
+<!--            android:id="@+id/textViewChildActionBanner"-->
+<!--            style="?textLarge"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="@string/add_children" />-->
 
-                <Button
-                    android:id="@+id/buttonManualWebRequest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="?buttonDefault"
-                    android:onClick="onFragmentButton"
-                    android:enabled="false"
-                    android:text="@string/web_request" />
-            </LinearLayout>
+        <EditText
+            android:id="@+id/editTextURL"
+            style="?editTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/row2"
+            android:hint="@string/change_url"
+            android:inputType="textUri"
+            android:text="@string/request_url" />
 
-            <LinearLayout
-                android:id="@+id/linearLayoutChildActions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linearLayoutWebRequests"
-                android:orientation="horizontal"
-                style="?layoutRow">
-
-                <Button
-                    android:id="@+id/buttonChildActionHelp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:text="@string/question_mark"
-                    style="?buttonTooltip"/>
-
-                <Button
-                    android:id="@+id/buttonChildAction"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    style="?buttonDefault"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="2dp"
-                    android:text="@string/create_child_action"
-                    android:enabled="false"
-                    android:onClick="onFragmentButton" />
-
-                <Button
-                    android:id="@+id/buttonCloseChild"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    style="?buttonDefault"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="2dp"
-                    android:enabled="false"
-                    android:text="@string/close_child_action"
-                    android:onClick="onFragmentButton" />
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayoutEvents"
+        <LinearLayout
+            android:id="@+id/row3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayoutChildrenActions"
-            style="?backgroundCard">
+            android:layout_below="@+id/editTextURL"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
-            <TextView
-                android:id="@+id/textViewEventsBanner"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/buttonManualWebRequest"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/report_events"
-                android:gravity="center_horizontal"
-                style="?textLarge" />
+                android:layout_weight="1"
+                style="?buttonDefault"
+                android:onClick="onFragmentButton"
+                android:enabled="false"
+                android:text="@string/web_request" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/buttonAddUrl"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewEventsBanner"
-                android:orientation="horizontal"
-                style="?layoutRow">
+                android:layout_weight="1"
+                style="?buttonDefault"
+                android:onClick="onFragmentButton"
+                android:enabled="false"
+                android:text="@string/add_url" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonReportingHelp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:text="@string/question_mark"
-                    style="?buttonTooltip" />
+        <LinearLayout
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row3"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
-                <Button
-                    android:id="@+id/buttonReportValue"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="2dp"
-                    style="?buttonDefault"
-                    android:onClick="onFragmentButton"
-                    android:enabled="false"
-                    android:text="@string/report_value" />
+            <Button
+                android:id="@+id/buttonReportValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                style="?buttonDefault"
+                android:onClick="onFragmentButton"
+                android:enabled="false"
+                android:text="@string/report_value" />
 
-                <Button
-                    android:id="@+id/buttonReportEvent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="2dp"
-                    style="?buttonDefault"
-                    android:onClick="onFragmentButton"
-                    android:enabled="false"
-                    android:text="@string/event" />
+            <Button
+                android:id="@+id/buttonReportEvent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                style="?buttonDefault"
+                android:onClick="onFragmentButton"
+                android:enabled="false"
+                android:text="@string/event" />
 
-                <Button
-                    android:id="@+id/buttonReportError"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="2dp"
-                    style="?buttonDefault"
-                    android:onClick="onFragmentButton"
-                    android:enabled="false"
-                    android:text="@string/report_error" />
-            </LinearLayout>
-        </RelativeLayout>
+            <Button
+                android:id="@+id/buttonReportError"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                style="?buttonDefault"
+                android:onClick="onFragmentButton"
+                android:enabled="false"
+                android:text="@string/report_error" />
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>

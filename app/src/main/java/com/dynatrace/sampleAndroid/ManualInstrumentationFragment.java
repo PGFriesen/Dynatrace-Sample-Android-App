@@ -27,6 +27,11 @@ public class ManualInstrumentationFragment extends Fragment {
     private TooltipHelper helper;
     private HashMap<String, View> viewMap;
     private Toaster t;
+    private DynatraceTutorial davis;
+
+    public ManualInstrumentationFragment(DynatraceTutorial davis){
+        this.davis = davis;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -200,26 +205,26 @@ public class ManualInstrumentationFragment extends Fragment {
                 onLeaveAction();
                 handleButtonDisplays(v);
                 break;
-            case R.id.buttonManualWebRequest:
-                onWebRequest();
-                break;
-            case R.id.buttonChildAction:
-                onCreateChildAction();
-                handleButtonDisplays(v);
-                break;
-            case R.id.buttonCloseChild:
-                onLeaveChild();
-                handleButtonDisplays(v);
-                break;
-            case R.id.buttonReportEvent:
-                onReportEvent();
-                break;
-            case R.id.buttonReportValue:
-                onReportValue();
-                break;
-            case R.id.buttonReportError:
-                onReportError();
-                break;
+//            case R.id.buttonManualWebRequest:
+//                onWebRequest();
+//                break;
+//            case R.id.buttonChildAction:
+//                onCreateChildAction();
+//                handleButtonDisplays(v);
+//                break;
+//            case R.id.buttonCloseChild:
+//                onLeaveChild();
+//                handleButtonDisplays(v);
+//                break;
+//            case R.id.buttonReportEvent:
+//                onReportEvent();
+//                break;
+//            case R.id.buttonReportValue:
+//                onReportValue();
+//                break;
+//            case R.id.buttonReportError:
+//                onReportError();
+//                break;
             default:
                 break;
         }
@@ -253,14 +258,14 @@ public class ManualInstrumentationFragment extends Fragment {
                     }
                 }
                 break;
-            case R.id.buttonChildAction:
-                viewMap.get("closeChild").setEnabled(true);
-                break;
-            case R.id.buttonCloseChild:
-//                if (childrenActions.size() == 0){
-//                    viewMap.get("closeChild").setEnabled(false);
-//                }
-                break;
+//            case R.id.buttonChildAction:
+//                viewMap.get("closeChild").setEnabled(true);
+//                break;
+//            case R.id.buttonCloseChild:
+////                if (childrenActions.size() == 0){
+////                    viewMap.get("closeChild").setEnabled(false);
+////                }
+//                break;
         }
     }
 
@@ -270,14 +275,14 @@ public class ManualInstrumentationFragment extends Fragment {
     private void setTooltips(){
         this.helper = new TooltipHelper();
 
-        // User Action Tooltip Button
-        setActionName((Button) view.findViewById(R.id.buttonActionHelp), "Manual User Action Dialog");
-        // Child Action Tooltip Button
-        setActionName((Button) view.findViewById(R.id.buttonChildActionHelp), "Child Action Dialog");
-        // Web Request Tooltip Button
-        setActionName((Button) view.findViewById(R.id.buttonManualWebRequestHelp), "Manual Web Request Dialog");
-        // Reporting Tooltip Button
-        setActionName((Button) view.findViewById(R.id.buttonReportingHelp), "Reporting Dialog");
+//        // User Action Tooltip Button
+//        setActionName((Button) view.findViewById(R.id.buttonActionHelp), "Manual User Action Dialog");
+//        // Child Action Tooltip Button
+//        setActionName((Button) view.findViewById(R.id.buttonChildActionHelp), "Child Action Dialog");
+//        // Web Request Tooltip Button
+//        setActionName((Button) view.findViewById(R.id.buttonManualWebRequestHelp), "Manual Web Request Dialog");
+//        // Reporting Tooltip Button
+//        setActionName((Button) view.findViewById(R.id.buttonReportingHelp), "Reporting Dialog");
     }
 
     /**
@@ -319,12 +324,12 @@ public class ManualInstrumentationFragment extends Fragment {
         this.viewMap = new HashMap<String, View>();
         viewMap.put("enterAction", view.findViewById(R.id.buttonEnterAction));
         viewMap.put("leaveAction", view.findViewById(R.id.buttonLeaveAction));
-        viewMap.put("createChild", view.findViewById(R.id.buttonChildAction));
-        viewMap.put("closeChild", view.findViewById(R.id.buttonCloseChild));
-        viewMap.put("webRequest", view.findViewById(R.id.buttonManualWebRequest));
-        viewMap.put("reportValue", view.findViewById(R.id.buttonReportValue));
-        viewMap.put("reportEvent", view.findViewById(R.id.buttonReportEvent));
-        viewMap.put("reportError", view.findViewById(R.id.buttonReportError));
+//        viewMap.put("createChild", view.findViewById(R.id.buttonChildAction));
+//        viewMap.put("closeChild", view.findViewById(R.id.buttonCloseChild));
+//        viewMap.put("webRequest", view.findViewById(R.id.buttonManualWebRequest));
+//        viewMap.put("reportValue", view.findViewById(R.id.buttonReportValue));
+//        viewMap.put("reportEvent", view.findViewById(R.id.buttonReportEvent));
+//        viewMap.put("reportError", view.findViewById(R.id.buttonReportError));
     }
 
 }
