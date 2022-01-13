@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class ManualInstrumentationActivity extends AppCompatActivity {
 
@@ -39,7 +40,12 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
      */
     public void onClickUserData(View view){
         switch(view.getId()){
-
+            case R.id.button_apply_tag:
+            case R.id.button_about_privacy_options:
+            case R.id.button_off:
+            case R.id.button_performance:
+            case R.id.button_user_behavior:
+                ((UserDataFragment) currentFragment).onClickUserData(view);
         }
     }
 

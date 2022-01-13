@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * Fragment class for controlling the user data layout in the Manual Instrumentation Activity
@@ -33,6 +34,13 @@ public class UserDataFragment extends Fragment {
      * @param view
      */
     public void onClickUserData(View view){
-
+        switch(view.getId()){
+            case R.id.button_apply_tag:
+            case R.id.button_about_privacy_options:
+            case R.id.button_off:
+            case R.id.button_performance:
+            case R.id.button_user_behavior:
+                davis.tagSession(((EditText)view.findViewById(R.id.text_user_tag)).getText().toString());
+        }
     }
 }
