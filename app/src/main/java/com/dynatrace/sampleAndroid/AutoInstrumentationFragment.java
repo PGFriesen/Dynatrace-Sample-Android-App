@@ -80,7 +80,7 @@ public class AutoInstrumentationFragment extends Fragment {
     /** 'Crash Application (Divide by 0)' button is pressed
     Attempts to log the result of dividing by zero and causes app to crash. */
     private void onCrashApplication(){
-        System.out.println(2/0);
+//        System.out.println(2/0);
     }
 
 
