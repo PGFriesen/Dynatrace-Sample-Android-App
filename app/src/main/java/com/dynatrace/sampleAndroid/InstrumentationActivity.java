@@ -50,7 +50,7 @@ public class InstrumentationActivity extends AppCompatActivity {
             whichFragment = true;
         } else {
             otherView = findViewById(R.id.buttonFragmentAuto);
-            this.currentFragment = new ManualInstrumentationFragment();
+//            this.currentFragment = new ManualInstrumentationFragment();
             whichFragment = false;
         }
 
