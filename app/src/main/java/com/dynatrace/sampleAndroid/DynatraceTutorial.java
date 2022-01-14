@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dynatrace.android.agent.DTXAction;
+import com.dynatrace.android.agent.Dynatrace;
+import com.dynatrace.android.agent.conf.DataCollectionLevel;
+import com.dynatrace.android.agent.conf.UserPrivacyOptions;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,6 +25,12 @@ public class DynatraceTutorial {
     private Context context;
     private OkHttpClient client;
 //    private Toaster toaster;
+
+    // Data Collection Levels
+    private final int OFF = 0;
+    private final int PERFORMANCE = 1;
+    private final int USER_BEHAVIOR = 2;
+
     private static final Random RAND = new Random();
 
     /**
@@ -112,7 +121,7 @@ public class DynatraceTutorial {
         for (int i = 0; i < numberOfRequests; i++){
             String url = urls[RAND.nextInt(urls.length)]; // Randomly select a URL
             int delay = (RAND.nextInt(6) * 50); // Randomly select a delay between 0-300ms
-            singleWebRequest(url, delay);
+            singleWebRequest(url, delay); // send the request to url after delay ms
         }
 
     }
@@ -126,13 +135,7 @@ public class DynatraceTutorial {
         System.out.println(2/0);
     }
 
-    /**
-     * Tag the user session with the SDK
-     * @param userTag string to use for the tag
-     */
-    public void tagSession(String userTag){
 
-    }
 
     /**
      * Create a custom user action
@@ -187,7 +190,43 @@ public class DynatraceTutorial {
             URL url = new URL("httpSUPERSECRET::::::://////");
         } catch (MalformedURLException m) {
             m.printStackTrace();
+
+            // Report the error for the given userAction
+
         }
+    }
+
+
+    /**
+     * Tag the user session with the SDK
+     * @param userTag string to use for the tag
+     */
+    public void tagSession(String userTag){
+
+    }
+
+
+    /**
+     * Set the data collection level for the current session.
+     * @param level the integer value of the new level to use
+     */
+    public void setDataCollection(int level){
+
+//        DataCollectionLevel newLevel = DataCollectionLevel.USER_BEHAVIOR;
+//        switch(level){
+//            case OFF:
+//                newLevel = DataCollectionLevel.OFF;
+//                break;
+//            case PERFORMANCE:
+//                newLevel = DataCollectionLevel.PERFORMANCE;
+//                break;
+//            case USER_BEHAVIOR:
+//                newLevel = DataCollectionLevel.USER_BEHAVIOR;
+//                break;
+//        }
+
+        // Use the SDK to Apply the newLevel for data collection
+
     }
 }
 

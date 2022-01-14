@@ -26,34 +26,21 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         onReplaceFragment(findViewById(R.id.buttonFragmentSDK));
     }
 
-//    /**
-//     *
-//     * @param view
-//     */
-//    public void onFragmentButton(View view) {
-//
-//    }
-
     /**
-     * Click listener for buttons in the User Data & Privacy Fragment
-     * @param view the button view object that was clicked
+     * Click listener for buttons in the User Data & Privacy Fragment. Sends the request
+     * to the UserDataFragment class to handle the logic
+     *
+     * @param buttonView the view object of the button that was clicked
      */
-    public void onClickUserData(View view){
-        switch(view.getId()){
-            case R.id.button_apply_tag:
-            case R.id.button_about_privacy_options:
-            case R.id.button_off:
-            case R.id.button_performance:
-            case R.id.button_user_behavior:
-                ((UserDataFragment) currentFragment).onClickUserData(view);
-        }
+    public void onClickUserData(View buttonView){
+        ((UserDataFragment) currentFragment).onClickUserData(buttonView);
     }
 
     /**
      * Click listener for buttons in the SDK Fragment
      * @param view the button view object that was clicked
      */
-    public void onClickSdk(View view){
+    public void onSdkClick(View view){
         switch(view.getId()){
 
         }
