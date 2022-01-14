@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserDataFragment">
+    tools:context=".UserDataFragment"
+    android:fillViewport="true">
 
     <!-- TODO: clean up layout to adhere to rules
     https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_user_tag"
+                android:onClick="onClickUserData"
                 android:text="@string/user_data_apply_tag" />
 
         </RelativeLayout>
@@ -67,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_privacy_banner"
+                android:onClick="onClickUserData"
                 android:text="@string/title_how_it_works"/>
 
             <LinearLayout
@@ -89,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="4"
+                        android:onClick="onClickUserData"
                         android:text="@string/user_data_off"/>
 
                     <TextView
@@ -115,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="4"
+                        android:onClick="onClickUserData"
                         android:text="@string/user_data_performance"/>
 
                     <TextView
@@ -141,6 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="4"
+                        android:onClick="onClickUserData"
                         android:text="@string/user_data_behavior"/>
 
                     <TextView

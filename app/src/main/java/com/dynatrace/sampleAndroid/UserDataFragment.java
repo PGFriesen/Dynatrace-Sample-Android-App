@@ -17,6 +17,7 @@ public class UserDataFragment extends Fragment {
     private View view;
     private DynatraceTutorial davis;
 
+
     public UserDataFragment(DynatraceTutorial davis) {
         this.davis = davis;
     }
@@ -31,16 +32,25 @@ public class UserDataFragment extends Fragment {
 
     /**
      * Custom Click Listener to handle button touches for this fragment
-     * @param view
+     * @param buttonView the view object for the button that was clicked
      */
-    public void onClickUserData(View view){
-        switch(view.getId()){
+    public void onClickUserData(View buttonView){
+        switch(buttonView.getId()){
             case R.id.button_apply_tag:
-            case R.id.button_about_privacy_options:
-            case R.id.button_off:
-            case R.id.button_performance:
-            case R.id.button_user_behavior:
                 davis.tagSession(((EditText)view.findViewById(R.id.text_user_tag)).getText().toString());
+                break;
+            case R.id.button_about_privacy_options:
+                // TODO: Implement dialogue section
+                break;
+            case R.id.button_off:
+                davis.setDataCollection(0);
+                break;
+            case R.id.button_performance:
+                davis.setDataCollection(1);
+                break;
+            case R.id.button_user_behavior:
+                davis.setDataCollection(2);
+                break;
         }
     }
 }
