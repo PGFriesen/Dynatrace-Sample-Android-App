@@ -21,6 +21,7 @@
     <!-- Notes Strings (note_) -->
 
     <!-- SDK Strings (sdk_) -->
+    <string name="custom_action">Custom Actions</string>
 
     <!-- User Data Strings (user_data_) -->
     <string name="user_data_hint_user_tag">Enter a user tag</string>
@@ -28,7 +29,7 @@
     <string name="user_data_dcl_off">No data is collected from the user except an anonymous session
         with a single user action for the loading of the application</string>
     <string name="user_data_dcl_performance">Only performance data is captured. No information will be collected to identify the user</string>
-    <string name="user_data_dcl_user_behavior">All data is collected including information to track the user accross multiple visits</string>
+    <string name="user_data_dcl_user_behavior">All data is collected including information to track the user across multiple visits</string>
     <string name="user_data_off">Off</string>
     <string name="user_data_performance">Performance</string>
     <string name="user_data_behavior">User Behavior</string>
@@ -61,7 +62,7 @@
     <string name="enter_action">Enter Action</string>
     <string name="leave_action">Leave Action</string>
     <string name="custom_user_action">Custom User Action</string>
-    <string name="custom_action">Custom Actions</string>
+
     <string name="create_action">Create Action</string>
     <string name="close_action">Close Action</string>
 
