@@ -13,6 +13,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
 
     private Fragment currentFragment;
     private boolean whichFragment; // true = SDK | false = user data
+
     private DynatraceTutorial davis;
 
     @Override
@@ -30,21 +31,22 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
      * Click listener for buttons in the User Data & Privacy Fragment. Sends the request
      * to the UserDataFragment class to handle the logic
      *
-     * @param buttonView the view object of the button that was clicked
+     * @param buttonView the button view object of the button that was clicked
      */
     public void onClickUserData(View buttonView){
         ((UserDataFragment) currentFragment).onClickUserData(buttonView);
     }
 
     /**
-     * Click listener for buttons in the SDK Fragment
-     * @param view the button view object that was clicked
+     * Click listener for buttons in the SDK Fragment. Sends the request to the manual instrumentation
+     * fragment class to handle the logic
+     *
+     * @param buttonView the button view object that was clicked
      */
-    public void onSdkClick(View view){
-        switch(view.getId()){
-
-        }
+    public void onClickSdk(View buttonView) {
+        ((ManualInstrumentationFragment) currentFragment).onClickSdk(buttonView);
     }
+
 
     /**
      * When the user clicks on the button for the non-active fragment, do 2 things
