@@ -100,9 +100,10 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_off" />
+                        android:text="@string/user_data_dcl_off"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
 
                 </LinearLayout>
 
@@ -127,9 +128,10 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_performance" />
+                        android:text="@string/user_data_dcl_performance"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
 
                 </LinearLayout>
 
@@ -154,9 +156,10 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_user_behavior" />
+                        android:text="@string/user_data_dcl_user_behavior"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
                 </LinearLayout>
 
             </LinearLayout>
