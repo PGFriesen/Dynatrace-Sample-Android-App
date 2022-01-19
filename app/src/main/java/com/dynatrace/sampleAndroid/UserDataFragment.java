@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-/**
- * Fragment class for controlling the user data layout in the Manual Instrumentation Activity
- */
 public class UserDataFragment extends Fragment {
 
     private View view;

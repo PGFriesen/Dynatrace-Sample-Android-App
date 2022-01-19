@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userActionBanner"
-                android:text="@string/how_it_works" />
+                android:text="@string/title_how_it_works" />
 
             <Spinner
                 android:id="@+id/spinnerListeners"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textviewWebRequestBanner"
                 android:onClick="onButtonTouch"
-                android:text="@string/how_it_works" />
+                android:text="@string/title_how_it_works" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutWebRequest"
@@ -213,7 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewCrashReportingBanner"
-                android:text="@string/how_it_works"
+                android:text="@string/title_how_it_works"
                 android:onClick="onButtonTouch"/>
 
             <Button
@@ -248,7 +248,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewLifecycleBanner"
-                android:text="@string/how_it_works"
+                android:text="@string/title_how_it_works"
                 android:onClick="onButtonTouch"/>
         </RelativeLayout>
     </RelativeLayout>

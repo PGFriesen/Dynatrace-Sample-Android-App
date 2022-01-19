@@ -27,11 +27,20 @@
             android:gravity="center_horizontal"
             android:text="@string/fragment_header_custom_actions" />
 
-        <EditText
-            android:id="@+id/editTextUserActionName"
+        <Button
+            android:id="@+id/button_about_custom_events"
+            style="?buttonDefault"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textFragmentHeader"
+            android:onClick="onClickSdk"
+            android:text="@string/title_how_it_works"/>
+
+        <EditText
+            android:id="@+id/text_user_action_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_about_custom_events"
             style="?editTextBox"
             android:gravity="center_horizontal"
             android:hint="@string/user_action_name"
@@ -41,28 +50,28 @@
             android:id="@+id/row1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextUserActionName"
+            android:layout_below="@+id/text_user_action_name"
             android:orientation="horizontal"
             style="?layoutRow">
 
             <Button
-                android:id="@+id/buttonEnterAction"
+                android:id="@+id/button_create_action"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:text="@string/enter_action" />
 
             <Button
-                android:id="@+id/buttonLeaveAction"
+                android:id="@+id/button_close_action"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="?buttonDefault"
                 android:enabled="false"
                 android:text="@string/leave_action"
-                android:onClick="onFragmentButton"/>
+                android:onClick="onClickSdk"/>
 
         </LinearLayout>
 
@@ -75,7 +84,7 @@
             style="?layoutRow">
 
             <Button
-                android:id="@+id/buttonChildAction"
+                android:id="@+id/button_create_child_action"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="?buttonDefault"
@@ -83,10 +92,10 @@
                 android:layout_marginHorizontal="2dp"
                 android:text="@string/create_child_action"
                 android:enabled="false"
-                android:onClick="onFragmentButton" />
+                android:onClick="onClickSdk" />
 
             <Button
-                android:id="@+id/buttonCloseChild"
+                android:id="@+id/button_close_child_action"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="?buttonDefault"
@@ -94,7 +103,7 @@
                 android:layout_marginHorizontal="2dp"
                 android:enabled="false"
                 android:text="@string/close_child_action"
-                android:onClick="onFragmentButton" />
+                android:onClick="onClickSdk" />
         </LinearLayout>
 
 <!--        <TextView-->
@@ -105,83 +114,82 @@
 <!--            android:gravity="center_horizontal"-->
 <!--            android:text="@string/add_children" />-->
 
-        <EditText
-            android:id="@+id/editTextURL"
-            style="?editTextBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/row2"
-            android:hint="@string/change_url"
-            android:inputType="textUri"
-            android:text="@string/request_url" />
-
         <LinearLayout
             android:id="@+id/row3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextURL"
+            android:layout_below="@+id/row2"
             android:orientation="horizontal"
             style="?layoutRow">
 
             <Button
-                android:id="@+id/buttonManualWebRequest"
+                android:id="@+id/button_send_web_request"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:enabled="false"
                 android:text="@string/web_request" />
 
             <Button
-                android:id="@+id/buttonAddUrl"
+                android:id="@+id/button_add_url"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:enabled="false"
                 android:text="@string/add_url" />
         </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/row3"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/url_list"
+            android:spinnerMode="dialog" />
 
         <LinearLayout
             android:id="@+id/row4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/row3"
+            android:layout_below="@+id/spinnerUrl"
             android:orientation="horizontal"
             style="?layoutRow">
 
             <Button
-                android:id="@+id/buttonReportValue"
+                android:id="@+id/button_report_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="2dp"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:enabled="false"
                 android:text="@string/report_value" />
 
             <Button
-                android:id="@+id/buttonReportEvent"
+                android:id="@+id/button_report_event"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="2dp"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:enabled="false"
                 android:text="@string/event" />
 
             <Button
-                android:id="@+id/buttonReportError"
+                android:id="@+id/button_report_error"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="2dp"
                 style="?buttonDefault"
-                android:onClick="onFragmentButton"
+                android:onClick="onClickSdk"
                 android:enabled="false"
                 android:text="@string/report_error" />
         </LinearLayout>

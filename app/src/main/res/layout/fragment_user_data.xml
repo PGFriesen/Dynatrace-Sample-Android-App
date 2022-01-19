@@ -82,7 +82,8 @@
                 <LinearLayout
                     android:id="@+id/layout_off"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
@@ -90,8 +91,8 @@
                         style="?buttonDefault"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="4"
+                        android:layout_gravity="start"
                         android:onClick="onClickUserData"
                         android:text="@string/user_data_off"/>
 
@@ -100,16 +101,19 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_off" />
+                        android:layout_gravity="start"
+                        android:text="@string/user_data_dcl_off"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout_performance"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
@@ -117,7 +121,7 @@
                         style="?buttonDefault"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="start"
                         android:layout_weight="4"
                         android:onClick="onClickUserData"
                         android:text="@string/user_data_performance"/>
@@ -127,16 +131,19 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_performance" />
+                        android:layout_gravity="start"
+                        android:text="@string/user_data_dcl_performance"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/layout_user_behavior"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
@@ -144,7 +151,7 @@
                         style="?buttonDefault"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="start"
                         android:layout_weight="4"
                         android:onClick="onClickUserData"
                         android:text="@string/user_data_behavior"/>
@@ -154,13 +161,15 @@
                         style="?textSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
                         android:layout_weight="6"
-                        android:text="@string/user_data_dcl_user_behavior" />
+                        android:layout_gravity="start"
+
+                        android:text="@string/user_data_dcl_user_behavior"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
                 </LinearLayout>
 
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
-
 </ScrollView>

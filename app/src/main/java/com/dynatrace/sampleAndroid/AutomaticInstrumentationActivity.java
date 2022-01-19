@@ -21,10 +21,6 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
     private DynatraceTutorial davis; // Tutorial class that handles functionality
     private Toaster toaster; // Used for presenting a Toast notification to user
 
-    // Layout references
-    private Spinner spinnerUserActionListeners; // Spinner for User Action Listeners
-    private Spinner spinnerURLs; // Spinner with URLs for web requests
-
     private String selectedUrl; // URL selected by spinner for web requests
     private String selectedSensor; // Sensor selected by spinner for user actions
 
@@ -38,8 +34,6 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_automatic_instrumentation);
 
         initializeActivity();
-
-        // TODO Create two fragments one for all of the layout and one for configurations
     }
 
 
@@ -97,7 +91,7 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
      */
     private void initializeSpinners(){
         // Spinner for URL selection
-        this.spinnerURLs = (Spinner) findViewById(R.id.spinnerUrl); // Reference to Spinner view
+        Spinner spinnerURLs = (Spinner) findViewById(R.id.spinnerUrl); // Reference to Spinner view
         spinnerURLs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
                 // Update the URL reference when a new item is selected
@@ -107,7 +101,7 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         });
 
         // Spinner for User Action Click Listeners
-        this.spinnerUserActionListeners = (Spinner) findViewById(R.id.spinnerListeners);
+        Spinner spinnerUserActionListeners = (Spinner) findViewById(R.id.spinnerListeners);
         spinnerUserActionListeners.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
                 // Update the sensor reference when a new sensor type is selected
