@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,8 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
     private String selectedUrl;         // URL selected by spinner for web requests
 //    private String selectedSensor;      // Sensor selected by spinner for user actions
     private Toaster toaster;            // Used for presenting a Toast notification to user
+    private TooltipHelper tooltips;     // Reference to tooltip class for creating dialog windows
+
 
     private static final Random RAND = new Random(); // Random Number Generator
 
@@ -74,10 +77,39 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
                 davis.crashApplication();
                 break;
 
+            case R.id.buttonAboutUserActions:
+                showTooltip("automatic_user_action");
+                break;
+
+            case R.id.buttonAboutWebRequests:
+                showTooltip("automatic_web_request");
+                break;
+
+            case R.id.buttonAboutCrashReporting:
+                showTooltip("automatic_crash_reporting");
+                break;
+
+            case R.id.buttonAboutLifecycle:
+                showTooltip("automatic_lifecycle");
+                break;
+
         }
 
         // Display a toast for the users
         toaster.toast(AutomaticInstrumentationActivity.this, toastMessage, Toast.LENGTH_LONG);
+    }
+
+    /**
+     * Helper class to show dialog windows for tooltips
+     * @param tag the tag to use to get the right tooltip
+     */
+    private void showTooltip(String tag){
+        Pair<String, String> tooltip = tooltips.getTooltip(tag);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
+        builder.setTitle(tooltip.first);
+        builder.setMessage(tooltip.second);
+        builder.show();
     }
 
     /**
@@ -130,7 +162,7 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         // Set private member variables
         this.davis = new DynatraceTutorial(this);
         this.toaster = new Toaster();
-
+        this.tooltips = new TooltipHelper();
         initializeSpinners();
         initializeSeekerBars();
     }
