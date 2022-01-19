@@ -27,16 +27,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InstrumentationActivity"
-            android:label="@string/title_activity_instrumentation"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Dynatrace.Light.Uem" />
-        <activity
-            android:name=".ConceptsActivity"
-            android:label="@string/title_activity_concepts"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Dynatrace.Light" />
-        <activity
             android:name=".AutomaticInstrumentationActivity"
             android:label="@string/title_activity_auto_instrumentation"
             android:parentActivityName=".MainActivity"
