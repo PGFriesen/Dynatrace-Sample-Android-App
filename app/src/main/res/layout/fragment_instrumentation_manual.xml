@@ -143,21 +143,20 @@
                 android:text="@string/add_url" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextURL"
-            style="?editTextBox"
+        <Spinner
+            android:id="@+id/spinnerUrl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/row3"
-            android:hint="@string/change_url"
-            android:inputType="textUri"
-            android:text="@string/request_url" />
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/url_list"
+            android:spinnerMode="dialog" />
 
         <LinearLayout
             android:id="@+id/row4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextURL"
+            android:layout_below="@+id/spinnerUrl"
             android:orientation="horizontal"
             style="?layoutRow">
 

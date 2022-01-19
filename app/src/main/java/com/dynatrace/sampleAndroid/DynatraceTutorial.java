@@ -63,12 +63,10 @@ public class DynatraceTutorial {
                 break;
             case "android.view.MenuItem$OnMenuItemClickListener":
                 break;
-
             case "android.widget.AdapterView$OnItemClickListener":
                 break;
             case "android.widget.AdapterView$OnItemSelectedListener":
                 break;
-
         }
     }
 
@@ -141,9 +139,38 @@ public class DynatraceTutorial {
      * Create a custom user action
      * @param actionName string name to use for the custom action
      */
-    public void customUserAction(String actionName){
+    public DTXAction createCustomAction(String actionName){
+        DTXAction customAction = null;
+
+        return customAction;
+    }
+
+    /**
+     * Close out a custom user action
+     * @param action the user action to be closed
+     */
+    public void closeCustomAction(DTXAction action){
 
     }
+
+    /**
+     * Create a custom child action
+     * @param parentAction the parent action of the child action to be created
+     */
+    public DTXAction createChildAction(DTXAction parentAction){
+        DTXAction childAction = null;
+
+        return childAction;
+    }
+
+    /**
+     * Tag the user session with the SDK
+     * @param userTag string to use for the tag
+     */
+    public void tagSession(String userTag){
+
+    }
+
 
     /**
      * Web Request to be manually instrumented with Dynatrace SDK
@@ -172,37 +199,37 @@ public class DynatraceTutorial {
         thread.start();
     }
 
-    /**
-     * Report values and events for a user action
-     * @param userAction action to report values and events to
-     */
-    public void reportWithSDK(DTXAction userAction) {
 
-        handleException(userAction);
+    /**
+     * Report events for a user action
+     * @param userAction action to report events to
+     */
+    public void reportEvent(DTXAction userAction){
+        String event = "String value to report as a standalone event";
     }
 
+
     /**
-     * Throw an malformed URL exception
+     * Report values for a user action
+     * @param userAction action to report values to
+     */
+    public void reportValue(DTXAction userAction) {
+        int randomInteger = RAND.nextInt(); // use a randomly generated integer to report a value
+
+    }
+
+
+    /**
+     * Throw an malformed URL exception and report the error
      * @param userAction action to report error to
      */
-    public void handleException(DTXAction userAction){
+    public void reportError(DTXAction userAction){
         try {
             URL url = new URL("httpSUPERSECRET::::::://////");
         } catch (MalformedURLException m) {
             m.printStackTrace();
 
-            // Report the error for the given userAction
-
         }
-    }
-
-
-    /**
-     * Tag the user session with the SDK
-     * @param userTag string to use for the tag
-     */
-    public void tagSession(String userTag){
-
     }
 
 
@@ -212,20 +239,19 @@ public class DynatraceTutorial {
      */
     public void setDataCollection(int level){
 
-//        DataCollectionLevel newLevel = DataCollectionLevel.USER_BEHAVIOR;
-//        switch(level){
-//            case OFF:
-//                newLevel = DataCollectionLevel.OFF;
-//                break;
-//            case PERFORMANCE:
-//                newLevel = DataCollectionLevel.PERFORMANCE;
-//                break;
-//            case USER_BEHAVIOR:
-//                newLevel = DataCollectionLevel.USER_BEHAVIOR;
-//                break;
-//        }
+        DataCollectionLevel newLevel = DataCollectionLevel.USER_BEHAVIOR;
+        switch(level){
+            case OFF:
+                newLevel = DataCollectionLevel.OFF;
+                break;
+            case PERFORMANCE:
+                newLevel = DataCollectionLevel.PERFORMANCE;
+                break;
+            case USER_BEHAVIOR:
+                newLevel = DataCollectionLevel.USER_BEHAVIOR;
+                break;
+        }
 
-        // Use the SDK to Apply the newLevel for data collection
 
     }
 }

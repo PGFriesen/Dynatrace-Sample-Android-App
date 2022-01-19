@@ -15,6 +15,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
     private boolean whichFragment; // true = SDK | false = user data
 
     private DynatraceTutorial davis;
+    private Toaster toaster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manual_instrumentation);
 
         this.davis = new DynatraceTutorial(ManualInstrumentationActivity.this);
+        this.toaster = new Toaster();
 
         whichFragment = false;
         onReplaceFragment(findViewById(R.id.buttonFragmentSDK));
@@ -61,7 +63,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         // 1. Switch the fragments
         if (selectedView.getId() == R.id.buttonFragmentSDK){
             deactivateView = findViewById(R.id.buttonFragmentUserData);
-            this.currentFragment = new ManualInstrumentationFragment(davis);
+            this.currentFragment = new ManualInstrumentationFragment(davis, toaster);
         } else {
             deactivateView = findViewById(R.id.buttonFragmentSDK);
             this.currentFragment = new UserDataFragment(davis);
