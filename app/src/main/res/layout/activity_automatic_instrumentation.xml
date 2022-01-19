@@ -39,23 +39,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userActionBanner"
+                android:onClick="onButtonTouch"
                 android:text="@string/title_how_it_works" />
 
-            <Spinner
-                android:id="@+id/spinnerListeners"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:dropDownWidth="wrap_content"
-                android:spinnerMode="dialog"
-                android:layout_below="@+id/buttonAboutUserActions"
-                android:entries="@array/supported_user_action_sensors"/>
+<!--            <Spinner-->
+<!--                android:id="@+id/spinnerListeners"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:dropDownWidth="wrap_content"-->
+<!--                android:spinnerMode="dialog"-->
+<!--                android:layout_below="@+id/buttonAboutUserActions"-->
+<!--                android:entries="@array/supported_user_action_sensors"/>-->
 
             <RelativeLayout
                 android:id="@+id/userActionActiveButtons"
-                style="?card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/spinnerListeners">
+                android:layout_below="@+id/buttonAboutUserActions">
 
                 <Button
                     android:id="@+id/buttonUserAction"

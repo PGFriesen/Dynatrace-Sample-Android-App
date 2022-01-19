@@ -13,9 +13,12 @@ public class UserDataFragment extends Fragment {
 
     private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
     private View view;                  // Reference to View for fragment
+    private TooltipHelper tooltips;
 
-    public UserDataFragment(DynatraceTutorial davis) {
+    public UserDataFragment(DynatraceTutorial davis, TooltipHelper tooltips) {
+
         this.davis = davis;
+        this.tooltips = tooltips;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class UserDataFragment extends Fragment {
                 davis.tagSession(((EditText)view.findViewById(R.id.text_user_tag)).getText().toString());
                 break;
             case R.id.button_about_privacy_options:
-                // TODO: Implement dialogue section
+                tooltips.showDialog(getParentFragmentManager(), "Adjust DataCollectionLevel with SDK");
                 break;
             case R.id.button_off:
                 davis.setDataCollection(0);

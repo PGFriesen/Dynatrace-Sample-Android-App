@@ -98,7 +98,7 @@
     </string-array>
 
     <!-- Crash Reporting & Error Handling -->
-    <string name="crash_reporting">Crash reporting &amp; Error Handling</string>
+    <string name="crash_reporting">Crash reporting</string>
 
     <!-- Lifecycle -->
     <string name="monitoring_lifecycle">Lifecycle Monitoring</string>

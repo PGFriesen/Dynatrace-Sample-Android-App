@@ -120,6 +120,18 @@ public class TooltipHelper {
             case "Try disabling instrumentation of sensors depending on issue":
                 tooltip = new Pair<String, String>(T_DISABLE_SENSORS, M_DISABLE_SENSORS);
                 break;
+            case "automatic_user_action":
+                tooltip = new Pair<String, String>(title_autoAction,autoAction);
+                break;
+            case "automatic_web_request":
+                tooltip = new Pair<String, String>(title_webRequest,webRequest);
+                break;
+            case "automatic_crash_reporting":
+                tooltip = new Pair<String, String>(title_crashReporting, crashReporting);
+                break;
+            case "automatic_lifecycle":
+                tooltip = new Pair<String, String>(title_lifecycle, lifecycle);
+                break;
             default:
                 tooltip = new Pair<String, String>("","");
         }
@@ -271,6 +283,18 @@ public class TooltipHelper {
             "userActions.enabled false\n\n" +
             "Web Requests\n" +
             "webRequests.enabled false";
+
+    String autoAction = "The Android Gradle Plugin automatically instruments user actions during build time by looking for common click-listeners.\n\nWhen a user clicks on an instrumented component such as a button, a user action is automatically created.";
+    String title_autoAction = "User Action Monitoring";
+
+    String webRequest = "Web Requests are automatically tagged and recorded by the Mobile OneAgent and if a request occurs during a user action, it will be added to the waterfall analysis.";
+    String title_webRequest = "Web Request Monitoring";
+
+    String crashReporting = "Unhandled Exceptions that result in crashes are automatically recorded by the mobile agent and upon restart, the agent will attempt to send the crash report to Dynatrace";
+    String title_crashReporting = "Crash Reporting";
+
+    String lifecycle = "Lifecycle events such as displaying or loading an activity are automatically recorded by Dynatrace. Lifecycle events are the behind-the-scene controls that occur as the user interacts with the application";
+    String title_lifecycle = "Lifecycle Monitoring";
 }
 
 

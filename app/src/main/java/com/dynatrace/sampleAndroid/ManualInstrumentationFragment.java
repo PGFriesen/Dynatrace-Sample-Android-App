@@ -27,14 +27,16 @@ public class ManualInstrumentationFragment extends Fragment {
     private String selectedUrl;                         // Reference to URL selected by spinner
     private Spinner spinner;                            // Reference to spinner object for URLs
     private View view;                                  // View reference for fragment
+    private final TooltipHelper tooltips;
     private final Toaster toaster;                      // Reference to toaster for displaying toasts
     private final DynatraceTutorial davis;              // Reference to Dynatrace tutorial class
 
 
     // Constructor - takes reference to DynatraceTutorial class
-    public ManualInstrumentationFragment(DynatraceTutorial davis, Toaster toaster){
+    public ManualInstrumentationFragment(DynatraceTutorial davis, Toaster toaster, TooltipHelper tooltips){
         this.davis = davis;
         this.toaster = toaster;
+        this.tooltips = tooltips;
     }
 
     @Override

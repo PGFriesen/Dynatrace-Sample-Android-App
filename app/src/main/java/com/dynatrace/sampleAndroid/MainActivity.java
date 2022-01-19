@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             // "About" button is pressed
             case R.id.buttonAbout:
                 tooltipHelper.showDialog(getSupportFragmentManager(), "about");
+                break;
 
             // "Instrumentation Sandbox" is pressed - InstrumentationActivity is started
             case R.id.relativeLayoutAutomaticInstrumentation:

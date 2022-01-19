@@ -2,20 +2,13 @@ package com.dynatrace.sampleAndroid;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
 import com.dynatrace.android.agent.DTXAction;
-import com.dynatrace.android.agent.Dynatrace;
 import com.dynatrace.android.agent.conf.DataCollectionLevel;
-import com.dynatrace.android.agent.conf.UserPrivacyOptions;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -34,40 +27,12 @@ public class DynatraceTutorial {
     private static final Random RAND = new Random();
 
     /**
-     * List of methods provided by this class
-     * --------------------------------------
-     * handleException - Catch a malformed URL Exception
-     * crashApplication - Crash application
-     * singleWebRequest - Make a web request
+     * Constructor
+     * @param c context for
      */
-
     public DynatraceTutorial(Context c){
         this.context = c;
         this.client = new OkHttpClient();
-    }
-
-    /**
-     * The only different between them is that onOptionItemSelected() is a direct method
-     * from the Activity class which gives you direct access to the selected MenuItem.
-     *
-     * On the other hand, setOnMenuItemClickListener() is a method that allows you to register
-     * probably a custom listener that will be notified whenever one of the MenuItem is clicked,
-     * and the listener must implement the interface Toolbar.onMenuItemClickListener().
-     * @param sensor
-     */
-    public void handleClickListener(String sensor){
-        switch(sensor){
-            case "android.view.View$OnClickListener": // Basic Button
-                break;
-            case "android.app.Activity.onOptionsItemSelected": // Option menu at top of activity
-                break;
-            case "android.view.MenuItem$OnMenuItemClickListener":
-                break;
-            case "android.widget.AdapterView$OnItemClickListener":
-                break;
-            case "android.widget.AdapterView$OnItemSelectedListener":
-                break;
-        }
     }
 
     /**
@@ -113,11 +78,10 @@ public class DynatraceTutorial {
      * Send several web requests as the result of a single button click
      * @param numberOfRequests the number of requests to make
      */
-    public void waterfallRequests(int numberOfRequests) {
-        String [] urls = context.getResources().getStringArray(R.array.url_list);
+    public void waterfallRequests(int numberOfRequests, ArrayList<String> endpoints) {
 
         for (int i = 0; i < numberOfRequests; i++){
-            String url = urls[RAND.nextInt(urls.length)]; // Randomly select a URL
+            String url = endpoints.get(RAND.nextInt(endpoints.size())); // Randomly select a URL
             int delay = (RAND.nextInt(6) * 50); // Randomly select a delay between 0-300ms
             singleWebRequest(url, delay); // send the request to url after delay ms
         }
@@ -134,6 +98,11 @@ public class DynatraceTutorial {
     }
 
 
+    /**
+     * *********************************************************************************************
+     * All of the below methods are used for Manually Instrumenting with the SDK
+     * *********************************************************************************************
+     */
 
     /**
      * Create a custom user action
@@ -190,6 +159,10 @@ public class DynatraceTutorial {
 
                     // Send the request
                     Response response = client.newCall(request).execute();
+
+                    if (response.isSuccessful()){
+                        // Handle response
+                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -251,8 +224,6 @@ public class DynatraceTutorial {
                 newLevel = DataCollectionLevel.USER_BEHAVIOR;
                 break;
         }
-
-
     }
 }
 

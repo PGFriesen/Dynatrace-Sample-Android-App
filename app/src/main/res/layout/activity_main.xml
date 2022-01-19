@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <!-- TODO: clean up layout to adhere to rules
     https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
@@ -14,6 +15,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_dark_gray"
         android:fadeScrollbars="false">
 
         <RelativeLayout
@@ -24,14 +26,14 @@
                 android:id="@+id/relativeLayoutAbout"
                 style="?backgroundActivityPrimary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onButtonTouch">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/buttonAbout"
                     style="?buttonDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="onButtonTouch"
                     android:text="@string/about" />
 
 
@@ -43,8 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativeLayoutAbout"
+                android:onClick="onButtonTouch"
                 android:clickable="true"
-                android:onClick="onButtonTouch">
+                >
 
 
                 <TextView

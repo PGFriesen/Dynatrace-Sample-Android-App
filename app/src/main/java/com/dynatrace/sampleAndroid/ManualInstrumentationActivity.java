@@ -15,6 +15,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
     private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
     private Fragment currentFragment;   // Reference to currently active fragment
     private Toaster toaster;            // Reference to toaster class for providing toasts messages
+    private TooltipHelper tooltips;     // Reference to tooltip class for creating dialog windows
 
 
     @Override
@@ -24,6 +25,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
 
         this.davis = new DynatraceTutorial(ManualInstrumentationActivity.this);
         this.toaster = new Toaster();
+        this.tooltips = new TooltipHelper();
 
         whichFragment = false;
         onReplaceFragment(findViewById(R.id.buttonFragmentSDK));
@@ -63,13 +65,13 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         // 1. Switch the fragments
         if (selectedView.getId() == R.id.buttonFragmentSDK){
             deactivateView = findViewById(R.id.buttonFragmentUserData);
-            this.currentFragment = new ManualInstrumentationFragment(davis, toaster);
+            this.currentFragment = new ManualInstrumentationFragment(davis, toaster, tooltips);
         } else {
             deactivateView = findViewById(R.id.buttonFragmentSDK);
-            this.currentFragment = new UserDataFragment(davis);
+            this.currentFragment = new UserDataFragment(davis, tooltips);
         }
 
-        // 2. Update the buttons
+        // 2. Update the button colors and active states
         selectedView.setBackgroundResource(R.drawable.button_teal_pressed);
         ((Button)selectedView).setTextColor(0xFFFFFFFF);
         ((Button)deactivateView).setEnabled(false);
