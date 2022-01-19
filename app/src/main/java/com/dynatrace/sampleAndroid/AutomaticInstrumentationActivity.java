@@ -2,10 +2,13 @@ package com.dynatrace.sampleAndroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -13,20 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 
 public class AutomaticInstrumentationActivity extends AppCompatActivity {
 
-    // Helpers
-    private DynatraceTutorial davis; // Tutorial class that handles functionality
-    private Toaster toaster; // Used for presenting a Toast notification to user
+    private ArrayList<String> listEndpoints;
+    private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
+    private int requestDelay = 0;       // Delay to add for requests
+    private int requestCount = 1;       // Number of requests to send for waterfall
+    private Spinner spinnerUrls;        // Reference to spinner for URLs
+    private String selectedUrl;         // URL selected by spinner for web requests
+//    private String selectedSensor;      // Sensor selected by spinner for user actions
+    private Toaster toaster;            // Used for presenting a Toast notification to user
 
-    private String selectedUrl; // URL selected by spinner for web requests
-    private String selectedSensor; // Sensor selected by spinner for user actions
-
-    private int requestDelay = 0; // Delay to add for requests
-    private int requestCount = 1; // Number of requests to send for waterfall
-
+    private static final Random RAND = new Random(); // Random Number Generator
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +46,13 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
      * Click Listener for all buttons in this activity with switch statement to handle logic
      * for the button that was touched
      */
-    public void onButtonTouch(View button){
+    public void onButtonTouch(View buttonView){
         String toastMessage = "";
 
-        switch(button.getId()){
+        switch(buttonView.getId()){
             case R.id.buttonUserAction:
-                davis.handleClickListener(selectedSensor);
-                toastMessage = "Basic User Action Created using " + selectedSensor + " sensor";
+                randomizeButtonText(buttonView);
+                toastMessage = "Basic User Action Created";
                 break;
 
             case R.id.buttonWebRequest:
@@ -56,12 +61,13 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
                 break;
 
             case R.id.buttonWebRequestWaterfall:
-                davis.waterfallRequests(requestCount);
+                davis.waterfallRequests(requestCount, listEndpoints);
                 toastMessage = "Sent " + String.valueOf(requestCount) + " requests";
                 break;
 
             case R.id.buttonAddUrl:
-                // TODO: Add dialog to add a URL to list
+                toastMessage = "Url Added to list of endpoints";
+                addUrl();
                 break;
 
             case R.id.buttonCrash:
@@ -72,6 +78,49 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
 
         // Display a toast for the users
         toaster.toast(AutomaticInstrumentationActivity.this, toastMessage, Toast.LENGTH_LONG);
+    }
+
+    /**
+     * Randomize the text on the basic user action button to highlight how user action names
+     * are determined
+     * @param buttonView the view object for the button that was pressed
+     */
+    private void randomizeButtonText(View buttonView){
+        ArrayList<String> listTexts = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.user_action_names)));
+
+        String newText = listTexts.get(RAND.nextInt(listTexts.size()));
+
+        ((Button) buttonView).setText(newText);
+    }
+
+    /**
+     * '+ Add Endpoint' button is pressed
+     * Add a URL to the list of URL's to make requests to
+     */
+    private void addUrl(){
+        // Create the Alert Dialog and listeners for adding URLs to spinner
+        AlertDialog.Builder addUrlDialog = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
+
+        // Create the EditText to use for entering in a new URL and set the dialog with it
+        EditText newUrl = new EditText(AutomaticInstrumentationActivity.this);
+        addUrlDialog.setView(newUrl);
+
+        // Set the listeners for the dialog buttons "Add URL" and "Cancel"
+        addUrlDialog.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int whichButton){
+                listEndpoints.add(newUrl.getText().toString());
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AutomaticInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerUrls.setAdapter(spinnerAdapter);
+            }
+        });
+        addUrlDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Do nothing
+            }
+        });
+
+        addUrlDialog.show();
     }
 
     /**
@@ -91,8 +140,8 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
      */
     private void initializeSpinners(){
         // Spinner for URL selection
-        Spinner spinnerURLs = (Spinner) findViewById(R.id.spinnerUrl); // Reference to Spinner view
-        spinnerURLs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        this.spinnerUrls = (Spinner) findViewById(R.id.spinnerUrl); // Reference to Spinner view
+        spinnerUrls.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
                 // Update the URL reference when a new item is selected
                 selectedUrl = parent.getItemAtPosition(position).toString();
@@ -100,16 +149,20 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) { /* Auto-Generated */ }
         });
 
+        this.listEndpoints = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.url_list)));
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AutomaticInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerUrls.setAdapter(spinnerAdapter);
+
         // Spinner for User Action Click Listeners
-        Spinner spinnerUserActionListeners = (Spinner) findViewById(R.id.spinnerListeners);
-        spinnerUserActionListeners.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-                // Update the sensor reference when a new sensor type is selected
-                selectedSensor = parent.getItemAtPosition(position).toString();
-               // TODO: Create the views for each listener and then add logic here to switch them out
-            }
-            public void onNothingSelected(AdapterView<?> adapterView) { /* Auto-Generated */ }
-        });
+//        Spinner spinnerUserActionListeners = (Spinner) findViewById(R.id.spinnerListeners);
+//        spinnerUserActionListeners.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+//                // Update the sensor reference when a new sensor type is selected
+//                selectedSensor = parent.getItemAtPosition(position).toString();
+//            }
+//            public void onNothingSelected(AdapterView<?> adapterView) { /* Auto-Generated */ }
+//        });
     }
 
     /**

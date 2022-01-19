@@ -69,7 +69,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
             this.currentFragment = new UserDataFragment(davis);
         }
 
-        // 2. Update the buttons
+        // 2. Update the button colors and active states
         selectedView.setBackgroundResource(R.drawable.button_teal_pressed);
         ((Button)selectedView).setTextColor(0xFFFFFFFF);
         ((Button)deactivateView).setEnabled(false);
