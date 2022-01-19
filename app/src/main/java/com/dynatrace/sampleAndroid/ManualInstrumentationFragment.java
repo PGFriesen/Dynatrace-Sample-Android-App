@@ -31,8 +31,6 @@ public class ManualInstrumentationFragment extends Fragment {
     private final DynatraceTutorial davis;              // Reference to Dynatrace tutorial class
 
 
-
-
     // Constructor - takes reference to DynatraceTutorial class
     public ManualInstrumentationFragment(DynatraceTutorial davis, Toaster toaster){
         this.davis = davis;

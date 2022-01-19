@@ -7,15 +7,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 
 public class ManualInstrumentationActivity extends AppCompatActivity {
 
-    private Fragment currentFragment;
-    private boolean whichFragment; // true = SDK | false = user data
+    private boolean whichFragment;      // true = SDK | false = user data
+    private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
+    private Fragment currentFragment;   // Reference to currently active fragment
+    private Toaster toaster;            // Reference to toaster class for providing toasts messages
 
-    private DynatraceTutorial davis;
-    private Toaster toaster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,9 +11,8 @@ import android.widget.EditText;
 
 public class UserDataFragment extends Fragment {
 
-    private View view;
-    private DynatraceTutorial davis;
-
+    private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
+    private View view;                  // Reference to View for fragment
 
     public UserDataFragment(DynatraceTutorial davis) {
         this.davis = davis;
