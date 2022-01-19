@@ -26,9 +26,8 @@
     <!-- User Data Strings (user_data_) -->
     <string name="user_data_hint_user_tag">Enter a user tag</string>
     <string name="user_data_apply_tag">Click to apply tag</string>
-    <string name="user_data_dcl_off">No data is collected from the user except an anonymous session
-        with a single user action for the loading of the application</string>
-    <string name="user_data_dcl_performance">Only performance data is captured. No information will be collected to identify the user</string>
+    <string name="user_data_dcl_off">Only a single anonymous user action is reported for the visit</string>
+    <string name="user_data_dcl_performance">Only performance data is captured. No data will be collected to track the user</string>
     <string name="user_data_dcl_user_behavior">All data is collected including information to track the user across multiple visits</string>
     <string name="user_data_off">Off</string>
     <string name="user_data_performance">Performance</string>
@@ -40,8 +39,9 @@
 
     <!-- Title Strings (title_) -->
     <string name="title_how_it_works">How it works</string>
-    <string name="how_it_works">How it works</string>
-
+    <string name="menu_string_property">Report a String property</string>
+    <string name="menu_integer_property">Report a Integer property</string>
+    <string name="menu_double_property">Report a Double Property</string>
     <!-- Action Strings (action_) -->
 
 
@@ -185,12 +185,6 @@
     <string name="content_description_image1">Dynatrace Plugin Logo</string>
     <string name="content_description_image2">Dynatrace SDK Logo</string>
 
-
-    <!-- Menu Strings-->
-    <string name="session_property">Make a String session property</string>
-    <string name="session_property2">Make a Numeric session property</string>
-    <string name="action_property">Make a User Action Property</string>
-    <string name="end_visit">End Visit</string>
 
 
     <!-- String Arrays for Concepts -->
