@@ -1,19 +1,8 @@
 # Dynatrace Perform Android HOT Session
 
-## Table of Contents
 
 
 # Code Snippets used in this session
-
-## Start the OneAgent manually
-```
-Dynatrace.startup(this, new DynatraceConfigurationBuilder("<ApplicationID Placeholder>","<BeaconURL Placeholder>")
-        .withUserOptIn(false)
-        .withStartupLoadBalancing(true)
-        .withCrashReporting(true)
-        .buildConfiguration()
-);
-```
 
 
 ## Creating Custom Actions
@@ -98,7 +87,7 @@ public void manualWebRequest(String url) {
 public void reportEvent(DTXAction userAction){
     String event = "String value to report as a standalone event";
 
-    
+    userAction.reportEvent(event);
 }
 ```
 
@@ -107,6 +96,8 @@ public void reportEvent(DTXAction userAction){
 ```
 public void reportValue(DTXAction userAction) {
     int randomInteger = RAND.nextInt(); // use a randomly generated integer to report a value
+
+    userAction.reportValue("Reported Integer", randomInteger);
 
 }
 ```
@@ -119,7 +110,7 @@ public void reportError(DTXAction userAction){
         URL url = new URL("httpSUPERSECRET::::::://////");
     } catch (MalformedURLException m) {
         m.printStackTrace();
-
+        userAction.reportError("URL Exception", m);
     }
 }
 ```
@@ -140,6 +131,12 @@ public void setDataCollection(int level){
             newLevel = DataCollectionLevel.USER_BEHAVIOR;
             break;
     }
+
+    Dynatrace.applyUserPrivacyOptions(UserPrivacyOptions.builder()
+        .withDataCollectionLevel(newLevel)
+        .withCrashReportingOptedIn(true)
+        .build()
+    );
 }
 ```
 
