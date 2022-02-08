@@ -33,13 +33,12 @@
 
     <!-- Informational message Strings (msg_) -->
     <string name="msg_about_application">This Application was created as a learning tool
-        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\n
-
-        While the app is designed to teach through use, it is also provided with the source code to
+        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\nWhile the app is designed to teach through use, it is also provided with the source code to
         see how it works programmatically, so feel free to review and play around with the project\n\n
 
-        To get started, you will need to configure this for the Mobile Application set up in your Dynatrace tenant (TODO item 1)\n\n
-            Cheers</string>
+        Currently there are two primary activities to play with\n
+    1. Automatic Instrumentation Activity which provides basic functionality to be instrumented with the Dynatrace Android Gradle Plugin
+    2. Manual Instrumentation Activity which provides a sandbox to manually instrument yourself</string>
 
 
     <!-- Action Strings (action_) -->
