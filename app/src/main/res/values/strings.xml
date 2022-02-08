@@ -32,13 +32,15 @@
     <!-- Error Message Strings (error_) -->
 
     <!-- Informational message Strings (msg_) -->
-    <string name="msg_about_application">This Application was created as a learning tool
-        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\nWhile the app is designed to teach through use, it is also provided with the source code to
+    <string name="msg_about_application">  This Application was created as a learning tool
+        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\n
+
+         While the app is designed to teach through use, it is also provided with the source code to
         see how it works programmatically, so feel free to review and play around with the project\n\n
 
-        Currently there are two primary activities to play with\n
-    1. Automatic Instrumentation Activity which provides basic functionality to be instrumented with the Dynatrace Android Gradle Plugin
-    2. Manual Instrumentation Activity which provides a sandbox to manually instrument yourself</string>
+         Currently there are two primary activities to check out...\n\n
+    1. Automatic Instrumentation Activity - Provides basic functionality to be instrumented with the Dynatrace Android Gradle Plugin\n\n
+    2. Manual Instrumentation Activity - Provides a sandbox to manually instrument yourself</string>
 
 
     <!-- Action Strings (action_) -->
