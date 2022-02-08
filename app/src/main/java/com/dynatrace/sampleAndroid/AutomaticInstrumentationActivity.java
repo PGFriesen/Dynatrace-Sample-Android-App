@@ -29,7 +29,6 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
     private int requestCount = 1;       // Number of requests to send for waterfall
     private Spinner spinnerUrls;        // Reference to spinner for URLs
     private String selectedUrl;         // URL selected by spinner for web requests
-//    private String selectedSensor;      // Sensor selected by spinner for user actions
     private Toaster toaster;            // Used for presenting a Toast notification to user
     private TooltipHelper tooltips;     // Reference to tooltip class for creating dialog windows
 
@@ -99,6 +98,8 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         toaster.toast(AutomaticInstrumentationActivity.this, toastMessage, Toast.LENGTH_LONG);
     }
 
+
+
     /**
      * Helper class to show dialog windows for tooltips
      * @param tag the tag to use to get the right tooltip
@@ -109,6 +110,7 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
         builder.setTitle(tooltip.first);
         builder.setMessage(tooltip.second);
+
         builder.show();
     }
 

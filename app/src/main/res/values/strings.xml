@@ -1,27 +1,22 @@
 <resources>
+    <string name="app_name">Dynatrace Android Tutorial</string>
 
-    <!-- TODO: Organize strings into the following categories -->
-    <!--
-    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
-    1. By Section
-    <string name="auto_"></string>
-    <string name="settings_"></string>
-    <string name="sdk_"></string>
-    <string name="user_data_"></string>
 
-    2. generic groupings
-    <string name="error_">An error message</string>
-    <string name="msg_">regular information message</string>
-    <string name="title_">A title, i.e. a dialog title</string>
-    <string name="action_">An action such as "Save" or "Create"</string>
-    -->
-
-    <!-- Auto-Instrumentation Strings (auto_) -->
-
-    <!-- Notes Strings (note_) -->
-
-    <!-- SDK Strings (sdk_) -->
+    <!-- Dynatrace-specific strings (dt_) -->
     <string name="custom_action">Custom Actions</string>
+    <string name="dt_custom_action">Custom Actions</string>
+
+    <!-- Title Strings (title_) -->
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_concepts">ConceptsActivity</string>
+    <string name="title_activity_instrumentation">InstrumentationActivity</string>
+    <string name="title_activity_auto_instrumentation">AutomaticInstrumentationActivity</string>
+    <string name="title_activity_manual_instrumentation">ManualInstrumentationActivity</string>
+    <string name="title_about_application">About the Application</string>
+    <string name="title_how_it_works">How it works</string>
+    <string name="title_plugin">Automatically Instrument with the Plugin</string>
+    <string name="title_sdk">Manually Instrument with the SDK</string>
+
 
     <!-- User Data Strings (user_data_) -->
     <string name="user_data_hint_user_tag">Enter a user tag</string>
@@ -33,28 +28,24 @@
     <string name="user_data_performance">Performance</string>
     <string name="user_data_behavior">User Behavior</string>
 
+
     <!-- Error Message Strings (error_) -->
 
     <!-- Informational message Strings (msg_) -->
+    <string name="msg_about_application">This Application was created as a learning tool
+        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\n
 
-    <!-- Title Strings (title_) -->
-    <string name="title_how_it_works">How it works</string>
-    <string name="menu_string_property">Report a String property</string>
-    <string name="menu_integer_property">Report a Integer property</string>
-    <string name="menu_double_property">Report a Double Property</string>
+        While the app is designed to teach through use, it is also provided with the source code to
+        see how it works programmatically, so feel free to review and play around with the project\n\n
+
+        To get started, you will need to configure this for the Mobile Application set up in your Dynatrace tenant (TODO item 1)\n\n
+            Cheers</string>
+
+
     <!-- Action Strings (action_) -->
 
 
-
     <!-- ______________________________________________________________________________________ -->
-
-    <!-- Titles -->
-    <string name="app_name">Dynatrace Android Tutorial</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_concepts">ConceptsActivity</string>
-    <string name="title_activity_instrumentation">InstrumentationActivity</string>
-    <string name="title_activity_auto_instrumentation">AutomaticInstrumentationActivity</string>
-    <string name="title_activity_manual_instrumentation">ManualInstrumentationActivity</string>
 
     <!-- User Actions -->
     <string name="monitoring_user_action">User Action Monitoring</string>
@@ -119,8 +110,7 @@
 
 
     <!-- Labels -->
-    <string name="plugin_activity">Automatically Instrument with the Plugin</string>
-    <string name="sdk_activity">Manually Instrument with the SDK</string>
+
 
 
     <!-- Preset URLs -->
@@ -152,7 +142,6 @@
 
 
     <!-- Button Texts -->
-
     <string name="change_button_text">Replace button text</string>
     <string name="modify_user_action">Extend and Modify User Actions</string>
     <string name="apply_tag">Apply Tag</string>
