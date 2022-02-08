@@ -1,63 +1,76 @@
 package com.dynatrace.sampleAndroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.dynatrace.android.agent.Dynatrace;
-import com.dynatrace.android.agent.conf.DataCollectionLevel;
-import com.dynatrace.android.agent.conf.UserPrivacyOptions;
-
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TooltipHelper tooltipHelper;
-    private Toaster toasterHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.tooltipHelper = new TooltipHelper();
-        this.toasterHelper = new Toaster();
         getSupportActionBar().setTitle("MainActivity");
-
+        setClickListeners();
     }
+
 
     /**
-     * Custom Click Listener that receives button clicks and determines which code should be
-     * executed
-     *
-     * @param view the view object for the button that was pressed
+     * Programmatically set the click listeners for the buttons in the MainActivity
      */
-    public void onButtonTouch(View view) {
-        Intent intent;
-        switch(view.getId()){
+    private void setClickListeners() {
 
-            // "About" button is pressed
-            case R.id.buttonAbout:
-                tooltipHelper.showDialog(getSupportFragmentManager(), "about");
-                break;
-
-            // "Instrumentation Sandbox" is pressed - InstrumentationActivity is started
-            case R.id.relativeLayoutAutomaticInstrumentation:
-                intent = new Intent(view.getContext(), AutomaticInstrumentationActivity.class);
+        /**
+         * Launch the Automatic Instrumentation Activity
+         */
+        RelativeLayout automaticInstrumentation = (RelativeLayout) findViewById(R.id.relative_layout_automatic_instrumentation);
+        automaticInstrumentation.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), AutomaticInstrumentationActivity.class);
                 startActivity(intent);
-                break;
+            }
+        });
 
-            // "Concepts and Troubleshooting" is pressed - ConceptsActivity is started
-            case R.id.relativeLayoutManualInstrumentation:
-                intent = new Intent(view.getContext(), ManualInstrumentationActivity.class);
+
+        /**
+         * Launch the Manual Instrumentation Activity
+         */
+        RelativeLayout manualInstrumentation = (RelativeLayout) findViewById(R.id.relative_layout_manual_instrumentation);
+        manualInstrumentation.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), ManualInstrumentationActivity.class);
                 startActivity(intent);
-                break;
-        }
+            }
+        });
+
+
+        /**
+         * Display a dialogue window when a user clicks on "About this app"
+         */
+        Button buttonAbout = (Button) findViewById(R.id.button_about);
+        buttonAbout.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setTitle(getResources().getString(R.string.title_about_application));
+                builder.setMessage(getResources().getString(R.string.msg_about_application));
+
+                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
+            }
+        });
     }
-
 }

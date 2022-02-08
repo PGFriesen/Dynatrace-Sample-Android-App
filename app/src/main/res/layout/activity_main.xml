@@ -8,10 +8,6 @@
     tools:context=".MainActivity"
     >
 
-    <!-- TODO: clean up layout to adhere to rules
-    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
-    -->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,57 +19,53 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutAbout"
+                android:id="@+id/relative_layout_about"
                 style="?backgroundActivityPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
 
                 <Button
-                    android:id="@+id/buttonAbout"
+                    android:id="@+id/button_about"
                     style="?buttonDefault"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="onButtonTouch"
-                    android:text="@string/about" />
+                    android:layout_width="match_parent"
+                    android:text="@string/title_about_application" />
 
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutAutomaticInstrumentation"
+                android:id="@+id/relative_layout_automatic_instrumentation"
                 style="?backgroundActivitySecondary"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relativeLayoutAbout"
-                android:onClick="onButtonTouch"
-                android:clickable="true"
-                >
-
+                android:layout_width="match_parent"
+                android:layout_below="@+id/relative_layout_about"
+                android:clickable="true">
 
                 <TextView
-                    android:id="@+id/textViewInstrumentationBanner"
+                    android:id="@+id/title_automatic_instrumentation"
                     style="?textHeader"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/plugin_activity" />
+                    android:layout_width="match_parent"
+                    android:text="@string/title_plugin" />
 
                 <ImageView
-                    android:id="@+id/imageAutoInstrumentation"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/image_plugin"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textViewInstrumentationBanner"
-                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
                     android:background="@color/background_gray"
                     android:contentDescription="@string/content_description_image1"
+                    android:layout_below="@id/title_automatic_instrumentation"
+                    android:layout_centerHorizontal="true"
                     app:srcCompat="@drawable/ic_plugin_connection_shamrockgreen_700"
                     app:tint="@color/dt_green" />
 
                 <TextView
                     style="?textHeader"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/imageAutoInstrumentation"
+                    android:layout_toRightOf="@id/image_plugin"
                     android:text="@string/launch"
                     android:textSize="48sp" />
 
@@ -81,38 +73,37 @@
 
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutManualInstrumentation"
+                android:id="@+id/relative_layout_manual_instrumentation"
                 style="?backgroundActivityPrimary"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onButtonTouch"
-                android:layout_below="@+id/relativeLayoutAutomaticInstrumentation"
-                android:clickable="true">
+                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:layout_below="@+id/relative_layout_automatic_instrumentation">
 
                 <TextView
-                    android:id="@+id/textViewConceptsBanner"
+                    android:id="@+id/title_manual_instrumentation"
                     style="?textHeader"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sdk_activity" />
+                    android:layout_width="match_parent"
+                    android:text="@string/title_sdk" />
 
                 <ImageView
-                    android:id="@+id/imageConceptsActivity"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/image_sdk"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textViewConceptsBanner"
-                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
                     android:background="@color/background_dark_gray"
                     android:contentDescription="@string/content_description_image2"
+                    android:layout_below="@id/title_manual_instrumentation"
+                    android:layout_centerHorizontal="true"
                     app:srcCompat="@drawable/ic_oneagent_sdk_shamrockgreen_700"
                     app:tint="@color/dt_green" />
 
                 <TextView
                     style="?textHeader"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/imageConceptsActivity"
+                    android:layout_toRightOf="@id/image_sdk"
                     android:text="@string/launch"
                     android:textSize="48sp"/>
             </RelativeLayout>
