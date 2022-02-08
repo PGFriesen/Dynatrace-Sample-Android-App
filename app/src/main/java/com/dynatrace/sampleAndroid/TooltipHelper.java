@@ -132,6 +132,10 @@ public class TooltipHelper {
             case "automatic_lifecycle":
                 tooltip = new Pair<String, String>(title_lifecycle, lifecycle);
                 break;
+            case "About Custom Actions":
+                tooltip = new Pair<String, String>(title_customActions, customActions);
+                break;
+
             default:
                 tooltip = new Pair<String, String>("","");
         }
@@ -295,6 +299,12 @@ public class TooltipHelper {
 
     String lifecycle = "Lifecycle events such as displaying or loading an activity are automatically recorded by Dynatrace. Lifecycle events are the behind-the-scene controls that occur as the user interacts with the application";
     String title_lifecycle = "Lifecycle Monitoring";
+
+    String customActions = "The sandbox below is designed to simulate the proper lifecycle for a custom user action\n\n" +
+            "Unlike automatically recorded actions, manual actions must be explicitly created and closed or they will not be recorded.\n\n" +
+            "We can also add different events such as reported values and web requests to our custom user action\n\n" +
+            "Complete the methods in DynatraceTutorial.java that are called inside of the ManualInstrumentationFragment.onClickSdk method";
+    String title_customActions = "Custom User Actions";
 }
 
 

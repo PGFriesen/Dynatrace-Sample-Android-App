@@ -140,7 +140,7 @@
                 style="?buttonDefault"
                 android:onClick="onClickSdk"
                 android:enabled="false"
-                android:text="@string/add_url" />
+                android:text="@string/dt_add_url" />
         </LinearLayout>
 
         <Spinner

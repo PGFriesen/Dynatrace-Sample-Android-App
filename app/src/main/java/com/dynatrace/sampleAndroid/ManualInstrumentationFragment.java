@@ -27,16 +27,16 @@ public class ManualInstrumentationFragment extends Fragment {
     private String selectedUrl;                         // Reference to URL selected by spinner
     private Spinner spinner;                            // Reference to spinner object for URLs
     private View view;                                  // View reference for fragment
-    private final TooltipHelper tooltips;
     private final Toaster toaster;                      // Reference to toaster for displaying toasts
     private final DynatraceTutorial davis;              // Reference to Dynatrace tutorial class
+    private TooltipHelper tooltips;
 
 
     // Constructor - takes reference to DynatraceTutorial class
     public ManualInstrumentationFragment(DynatraceTutorial davis, Toaster toaster, TooltipHelper tooltips){
         this.davis = davis;
-        this.toaster = toaster;
         this.tooltips = tooltips;
+        this.toaster = toaster;
     }
 
     @Override
@@ -98,6 +98,9 @@ public class ManualInstrumentationFragment extends Fragment {
             case R.id.button_add_url:
                 onAddUrl();
                 break;
+            case R.id.button_about_custom_events:
+                tooltips.showDialog(getParentFragmentManager(), "About Custom Actions");
+                break;
         }
 
         toaster.toast(view.getContext(),toastMessage, Toast.LENGTH_LONG);
@@ -149,7 +152,7 @@ public class ManualInstrumentationFragment extends Fragment {
     /** 'Web Request' button is pressed
     Manually tag a web request to be associated with the currently open action and time it */
     private void onWebRequest() {
-        davis.manualWebRequest(selectedUrl);
+        davis.manualWebRequest(selectedUrl, parentAction);
     }
 
 
@@ -180,14 +183,14 @@ public class ManualInstrumentationFragment extends Fragment {
      */
     private void onAddUrl(){
         // Create the Alert Dialog and listeners for adding URLs to spinner
-        AlertDialog.Builder addUrlDialog = new AlertDialog.Builder(view.getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
         // Create the EditText to use for entering in a new URL and set the dialog with it
         EditText newUrl = new EditText(view.getContext());
-        addUrlDialog.setView(newUrl);
+        builder.setView(newUrl);
 
         // Set the listeners for the dialog buttons "Add URL" and "Cancel"
-        addUrlDialog.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int whichButton){
                 listEndpoints.add(newUrl.getText().toString());
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, listEndpoints);
@@ -195,13 +198,13 @@ public class ManualInstrumentationFragment extends Fragment {
                 spinner.setAdapter(spinnerAdapter);
             }
         });
-        addUrlDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Do nothing
             }
         });
 
-        addUrlDialog.show();
+        builder.show();
     }
 
 

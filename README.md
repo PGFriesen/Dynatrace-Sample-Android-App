@@ -1,5 +1,8 @@
 # Dynatrace Perform Android HOT Session
 
+## Table of Contents
+
+
 # Code Snippets used in this session
 
 ## Start the OneAgent manually
