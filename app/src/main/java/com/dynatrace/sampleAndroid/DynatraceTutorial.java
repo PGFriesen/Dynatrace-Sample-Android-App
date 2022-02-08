@@ -145,7 +145,7 @@ public class DynatraceTutorial {
      * Web Request to be manually instrumented with Dynatrace SDK
      * @param url endpoint to send request to
      */
-    public void manualWebRequest(String url) {
+    public void manualWebRequest(String url, DTXAction webRequestAction) {
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
@@ -188,7 +188,6 @@ public class DynatraceTutorial {
      */
     public void reportValue(DTXAction userAction) {
         int randomInteger = RAND.nextInt(); // use a randomly generated integer to report a value
-
     }
 
 

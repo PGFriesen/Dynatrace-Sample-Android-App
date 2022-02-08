@@ -1,22 +1,28 @@
 <resources>
     <string name="app_name">Dynatrace Android Tutorial</string>
 
-
     <!-- Dynatrace-specific strings (dt_) -->
-    <string name="custom_action">Custom Actions</string>
+    <string name="dt_add_url">+ Add Endpoint</string>
+    <string name="dt_count">1 request(s)</string>
+    <string name="dt_crash_app">Crash App (divide by 0)</string>
     <string name="dt_custom_action">Custom Actions</string>
+    <string name="dt_delay">0 ms</string>
+    <string name="dt_send_web_request">Send Web Request</string>
+    <string name="dt_user_action">User Action</string>
+    <string name="dt_waterfall_request">Create waterfall with many requests</string>
 
     <!-- Title Strings (title_) -->
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_concepts">ConceptsActivity</string>
-    <string name="title_activity_instrumentation">InstrumentationActivity</string>
     <string name="title_activity_auto_instrumentation">AutomaticInstrumentationActivity</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_manual_instrumentation">ManualInstrumentationActivity</string>
     <string name="title_about_application">About the Application</string>
+    <string name="title_crash_reporting">Crash Reporting</string>
     <string name="title_how_it_works">How it works</string>
+    <string name="title_lifecycle_monitoring">Lifecycle Monitoring</string>
     <string name="title_plugin">Automatically Instrument with the Plugin</string>
     <string name="title_sdk">Manually Instrument with the SDK</string>
-
+    <string name="title_user_action_monitoring">User Action Monitoring</string>
+    <string name="title_web_request_monitoring">Web Request Monitoring</string>
 
     <!-- User Data Strings (user_data_) -->
     <string name="user_data_hint_user_tag">Enter a user tag</string>
@@ -28,22 +34,27 @@
     <string name="user_data_performance">Performance</string>
     <string name="user_data_behavior">User Behavior</string>
 
+    <!-- Informational message Strings (msg_) -->
+    <string name="msg_about_application">This Application was created as a learning toolto help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\nWhile the app is designed to teach through use, it is also provided with the source code to see how it works programmatically, so feel free to review and play around with the project\n\nCurrently there are two primary activities to check out...\n\n1. Automatic Instrumentation Activity - Provides basic sandbox with functionality to be instrumented with the Dynatrace Android Gradle Plugin\n\n2. Manual Instrumentation Activity - Provides a sandbox to manually instrument with the SDK</string>
+    <string name="msg_about_user_actions">The Android Gradle Plugin automatically instruments user actions during build time by looking for common click-listeners.\n\nWhen a user clicks on an instrumented component such as a button, a user action is automatically created.</string>
+    <string name="msg_about_web_requests">Web Requests are automatically tagged and recorded by the Mobile OneAgent and if a request occurs during a user action, it will be added to the waterfall analysis.</string>
+    <string name="msg_about_crash_reporting">Unhandled Exceptions that result in crashes are automatically recorded by the mobile agent and upon restart, the agent will attempt to send the crash report to Dynatrace</string>
+    <string name="msg_about_lifecycle">Lifecycle events such as displaying or loading an activity are automatically recorded by Dynatrace. Lifecycle events are the behind-the-scene controls that occur as the user interacts with the application</string>
 
     <!-- Error Message Strings (error_) -->
 
-    <!-- Informational message Strings (msg_) -->
-    <string name="msg_about_application">  This Application was created as a learning tool
-        to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\n
-
-         While the app is designed to teach through use, it is also provided with the source code to
-        see how it works programmatically, so feel free to review and play around with the project\n\n
-
-         Currently there are two primary activities to check out...\n\n
-    1. Automatic Instrumentation Activity - Provides basic functionality to be instrumented with the Dynatrace Android Gradle Plugin\n\n
-    2. Manual Instrumentation Activity - Provides a sandbox to manually instrument yourself</string>
-
-
-    <!-- Action Strings (action_) -->
+    <!-- Preset URLs -->
+    <string-array name="url_list">
+        <item>https://dynatrace.com/support/help/how-to-use-dynatrace/real-user-monitoring/setup-and-configuration/mobile-apps</item>
+        <item>https://dynatrace.com/news/newsroom/</item>
+        <item>https://google.com/search?q=dynatrace+perform</item>
+        <item>https://bing.com/search?q=how+to+change+default+browser+to+google</item>
+        <item>https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags</item>
+        <item>https://twitter.com/Dynatrace</item>
+        <item>https://www.core77.com/posts/110412/Incredible-Shots-of-the-Breadboard-Prototype-for-the-First-iPod</item>
+        <item>https://ionicframework.com/</item>
+        <item>https://www.telerik.com/</item>
+    </string-array>
 
 
     <!-- ______________________________________________________________________________________ -->
@@ -78,10 +89,8 @@
     <!-- Web Requests -->
     <string name="monitoring_web_request">Web Request Monitoring</string>
     <string name="web_request">Send Web Request</string>
-    <string name="add_url">+ Add Endpoint</string>
     <string name="waterfall_request">Create waterfall with many requests</string>
-    <string name="delay">0 ms</string>
-    <string name="count">1 request(s)</string>
+
 
     <string-array name="supported_web_request_frameworks">
         <item>HttpURLConnection</item>
@@ -114,18 +123,7 @@
 
 
 
-    <!-- Preset URLs -->
-    <string-array name="url_list">
-        <item>https://dynatrace.com/support/help/how-to-use-dynatrace/real-user-monitoring/setup-and-configuration/mobile-apps</item>
-        <item>https://dynatrace.com/news/newsroom/</item>
-        <item>https://google.com/search?q=dynatrace+perform</item>
-        <item>https://bing.com/search?q=how+to+change+default+browser+to+google</item>
-        <item>https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags</item>
-        <item>https://twitter.com/Dynatrace</item>
-        <item>https://www.core77.com/posts/110412/Incredible-Shots-of-the-Breadboard-Prototype-for-the-First-iPod</item>
-        <item>https://ionicframework.com/</item>
-        <item>https://www.telerik.com/</item>
-    </string-array>
+
 
 
     <!-- Header Strings -->
@@ -134,7 +132,6 @@
     <string name="create_user_action">Create a Custom Action and Leave when complete</string>
     <string name="add_children">Add Web Requests and Children Actions</string>
     <string name="report_events">Report values and events</string>
-    <string name="crash_app">Crash App (divide by 0)</string>
     <string name="topic">Topic</string>
     <string name="concept">Concept</string>
     <string name="caught_error">Catch Exception (Malformed URL)</string>

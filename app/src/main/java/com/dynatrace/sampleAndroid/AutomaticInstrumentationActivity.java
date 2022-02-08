@@ -23,14 +23,13 @@ import java.util.Random;
 
 public class AutomaticInstrumentationActivity extends AppCompatActivity {
 
-    private ArrayList<String> listEndpoints;
-    private DynatraceTutorial davis;    // Reference to Dynatrace Tutorial Class
-    private int requestDelay = 0;       // Delay to add for requests
-    private int requestCount = 1;       // Number of requests to send for waterfall
-    private Spinner spinnerUrls;        // Reference to spinner for URLs
-    private String selectedUrl;         // URL selected by spinner for web requests
-    private Toaster toaster;            // Used for presenting a Toast notification to user
-    private TooltipHelper tooltips;     // Reference to tooltip class for creating dialog windows
+    private ArrayList<String> listEndpoints;        // List of URLs that are available to choose from
+    private DynatraceTutorial davis;                // Reference to Dynatrace Tutorial Class
+    private int requestDelay = 0;                   // Delay to add for requests
+    private int requestCount = 1;                   // Number of requests to send for waterfall
+    private Spinner spinnerUrls;                    // Reference to spinner for URLs
+    private String selectedUrl;                     // URL selected by spinner for web requests
+    private Toaster toaster;                        // Used for presenting a Toast notification to user
 
 
     private static final Random RAND = new Random(); // Random Number Generator
@@ -52,80 +51,93 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         String toastMessage = "";
 
         switch(buttonView.getId()){
-            case R.id.buttonUserAction:
+            case R.id.button_user_action:
+                toastMessage = "Basic User Action Created: 'Touch on " + ((Button) findViewById(R.id.button_user_action)).getText().toString() + "'";
                 randomizeButtonText(buttonView);
-                toastMessage = "Basic User Action Created";
                 break;
 
-            case R.id.buttonWebRequest:
+            case R.id.button_send_web_request:
                 davis.singleWebRequest(selectedUrl, requestDelay);
                 toastMessage = "Sent Request to:\n" + selectedUrl;
                 break;
 
-            case R.id.buttonWebRequestWaterfall:
+            case R.id.button_web_request_waterfall:
                 davis.waterfallRequests(requestCount, listEndpoints);
                 toastMessage = "Sent " + String.valueOf(requestCount) + " requests";
                 break;
 
-            case R.id.buttonAddUrl:
+            case R.id.button_add_url:
                 toastMessage = "Url Added to list of endpoints";
                 addUrl();
                 break;
 
-            case R.id.buttonCrash:
+            case R.id.button_crash_application:
                 davis.crashApplication();
                 break;
 
-            case R.id.buttonAboutUserActions:
-                showTooltip("automatic_user_action");
+            case R.id.button_about_user_actions:
+                showTooltip(getResources().getString(R.string.title_user_action_monitoring),
+                        getResources().getString(R.string.msg_about_user_actions));
                 break;
 
-            case R.id.buttonAboutWebRequests:
-                showTooltip("automatic_web_request");
+            case R.id.button_about_web_requests:
+                showTooltip(getResources().getString(R.string.title_web_request_monitoring),
+                        getResources().getString(R.string.msg_about_web_requests));
                 break;
 
-            case R.id.buttonAboutCrashReporting:
-                showTooltip("automatic_crash_reporting");
+            case R.id.button_about_crash_reporting:
+                showTooltip(getResources().getString(R.string.title_crash_reporting),
+                        getResources().getString(R.string.msg_about_crash_reporting));
                 break;
 
-            case R.id.buttonAboutLifecycle:
-                showTooltip("automatic_lifecycle");
+            case R.id.button_about_lifecycle:
+                showTooltip(getResources().getString(R.string.title_lifecycle_monitoring),
+                        getResources().getString(R.string.msg_about_lifecycle));
                 break;
-
         }
 
-        // Display a toast for the users
-        toaster.toast(AutomaticInstrumentationActivity.this, toastMessage, Toast.LENGTH_LONG);
+        if (toastMessage.length() > 0){
+            // Display a toast for the users
+            toaster.toast(AutomaticInstrumentationActivity.this, toastMessage, Toast.LENGTH_LONG);
+        }
     }
 
 
 
     /**
      * Helper class to show dialog windows for tooltips
-     * @param tag the tag to use to get the right tooltip
+     * @param title - title to display for dialog window
+     * @param message - message that dialog will display
      */
-    private void showTooltip(String tag){
-        Pair<String, String> tooltip = tooltips.getTooltip(tag);
-
+    private void showTooltip(String title, String message){
+        // Create the dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
-        builder.setTitle(tooltip.first);
-        builder.setMessage(tooltip.second);
+
+        // Set the message and title
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        // Set a "Ok" button that does nothing
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int whichButton){
+                dialog.dismiss();
+            }
+        });
 
         builder.show();
     }
 
+
     /**
-     * Randomize the text on the basic user action button to highlight how user action names
-     * are determined
+     * Randomize the text on the basic user action button when pressed
      * @param buttonView the view object for the button that was pressed
      */
     private void randomizeButtonText(View buttonView){
         ArrayList<String> listTexts = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.user_action_names)));
-
         String newText = listTexts.get(RAND.nextInt(listTexts.size()));
-
         ((Button) buttonView).setText(newText);
     }
+
 
     /**
      * '+ Add Endpoint' button is pressed
@@ -133,48 +145,62 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
      */
     private void addUrl(){
         // Create the Alert Dialog and listeners for adding URLs to spinner
-        AlertDialog.Builder addUrlDialog = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(AutomaticInstrumentationActivity.this);
+        dialogBuilder.setTitle("Add URL to List of Endpoints");
 
         // Create the EditText to use for entering in a new URL and set the dialog with it
-        EditText newUrl = new EditText(AutomaticInstrumentationActivity.this);
-        addUrlDialog.setView(newUrl);
+        EditText editTextNewUrl = new EditText(AutomaticInstrumentationActivity.this);
+        dialogBuilder.setView(editTextNewUrl);
 
-        // Set the listeners for the dialog buttons "Add URL" and "Cancel"
-        addUrlDialog.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
+        // Set the listeners for the "Add URL" dialog button to confirm that addition of a new URL to the list
+        dialogBuilder.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int whichButton){
-                listEndpoints.add(newUrl.getText().toString());
+                listEndpoints.add(editTextNewUrl.getText().toString());
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AutomaticInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
                 spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerUrls.setAdapter(spinnerAdapter);
             }
         });
-        addUrlDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+        // Set the listener for "Cancel" dialog button - do nothing when the user cancels adding a new URL
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // Do nothing
+                dialog.dismiss();
             }
         });
 
-        addUrlDialog.show();
+        // display the dialog
+        dialogBuilder.create().show();
     }
 
+
     /**
-     * Init function for declaring member variables and setting up any UI components
+     * Init function for declaring member variables and setting up UI components
      */
     private void initializeActivity(){
-        // Set private member variables
         this.davis = new DynatraceTutorial(this);
         this.toaster = new Toaster();
-        this.tooltips = new TooltipHelper();
         initializeSpinners();
         initializeSeekerBars();
     }
 
+
     /**
-     * Initialize the spinner that contains the URL's
+     * Initialize the spinner (dropdown menu) that contains the URLs
      */
     private void initializeSpinners(){
-        // Spinner for URL selection
-        this.spinnerUrls = (Spinner) findViewById(R.id.spinnerUrl); // Reference to Spinner view
+        // Initialize ArrayList of endpoints from String resources for the URLs
+        this.listEndpoints = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.url_list)));
+
+        // Create the adapter using the list of endpoints
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AutomaticInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Get the reference to the spinner view and set the adapter for the spinner
+        this.spinnerUrls = (Spinner) findViewById(R.id.spinner_url);
+        spinnerUrls.setAdapter(spinnerAdapter);
+
+        // Create the click listener for the spinner when an item is selected
         spinnerUrls.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
                 // Update the URL reference when a new item is selected
@@ -182,36 +208,22 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
             }
             public void onNothingSelected(AdapterView<?> adapterView) { /* Auto-Generated */ }
         });
-
-        this.listEndpoints = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.url_list)));
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AutomaticInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerUrls.setAdapter(spinnerAdapter);
-
-        // Spinner for User Action Click Listeners
-//        Spinner spinnerUserActionListeners = (Spinner) findViewById(R.id.spinnerListeners);
-//        spinnerUserActionListeners.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-//                // Update the sensor reference when a new sensor type is selected
-//                selectedSensor = parent.getItemAtPosition(position).toString();
-//            }
-//            public void onNothingSelected(AdapterView<?> adapterView) { /* Auto-Generated */ }
-//        });
     }
+
 
     /**
      * Initialize the seeker bars used for request delays and number of requests
      */
     private void initializeSeekerBars(){
         // Configure the requestDelay slider for values between 0 - 5,000 ms and increment by 250
-        SeekBar requestDelaySeeker = (SeekBar) findViewById(R.id.seekbarRequestDelay);
-        requestDelaySeeker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar seekBarRequestDelay = (SeekBar) findViewById(R.id.seekbar_request_delay);
+        seekBarRequestDelay.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int stepSize = 250;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress = (progress/stepSize)*stepSize;
                 seekBar.setProgress(progress);
-                ((TextView) findViewById(R.id.textViewDelayIndicator)).setText(String.valueOf(progress) + " ms");
+                ((TextView) findViewById(R.id.text_request_delay)).setText(String.valueOf(progress) + " ms");
                 requestDelay = progress;
             }
             @Override
@@ -221,14 +233,14 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         });
 
         // Configure the requestCount slider for values between 1-15 requests increment by 1
-        SeekBar requestCountSeeker = (SeekBar) findViewById(R.id.seekbarRequestCount);
-        requestCountSeeker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar seekBarRequestCount = (SeekBar) findViewById(R.id.seekbar_request_count);
+        seekBarRequestCount.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int stepSize = 1;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress = (progress/stepSize)*stepSize;
                 seekBar.setProgress(progress);
-                ((TextView) findViewById(R.id.textViewRequestCountIndicator)).setText(String.valueOf(progress) + " request(s)");
+                ((TextView) findViewById(R.id.text_request_count)).setText(String.valueOf(progress) + " request(s)");
                 requestCount = progress;
             }
             @Override
