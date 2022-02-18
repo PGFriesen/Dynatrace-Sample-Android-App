@@ -11,27 +11,27 @@ Use this README.md guide to download and set up this sample Native Android Appli
 
 # Get Started
 
-## Pre-requisites
+## Pre-requisites {#pre-requisites}
 - Android Studio Installed
 - Emulator Created in Android Studio or Physical Device with USB Debugging enabled
 
-
-## Download and Run Application
-
-b
-b
-b
-b
-b
-b
-b
+\n\n\n\n\n\n\n\n\\n\n\n\n\n\n\n\n\\n\n\n\n\n\n\n
+## Download and Run Application {#download-and-run-application}
 
 b
 b
 b
 b
+b
+b\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+b
 
-## Set-up for Automatic Instrumentation
+b
+b
+b
+b
+
+## Set-up for Automatic Instrumentation {#set-up-for-automatic-instrumentation}
 aa
 a
 a
@@ -44,7 +44,7 @@ a
 a
 
 
-## Set-up for Manual Instrumentation
+## Set-up for Manual Instrumentation {#set-up-for-manual-instrumentation}
 g
 g
 g
