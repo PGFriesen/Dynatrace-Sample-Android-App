@@ -3,10 +3,10 @@ Use this README.md guide to download and set up this sample Native Android Appli
 
 
 # Table of Contents
-- [Pre-requisites](#markdown-header-pre-requisites)
-- [Download and Run Application](#markdown-header-download-and-run-application)
-- [Set-up for Automatic Instrumentation](#markdown-header-set-up-for-automatic-instrumentation)
-- [Set-up for Manual Instrumentation](#markdown-header-set-up-for-manual-instrumentation)
+- [Pre-requisites](#pre-requisites)
+- [Download and Run Application](#download-and-run-application)
+- [Set-up for Automatic Instrumentation](#set-up-for-automatic-instrumentation)
+- [Set-up for Manual Instrumentation](#set-up-for-manual-instrumentation)
 
 
 # Get Started
