@@ -1,0 +1,176 @@
+<resources>
+    <string name="app_name">Dynatrace Android Tutorial</string>
+
+    <!-- Dynatrace-specific strings (dt_) -->
+    <string name="dt_add_url">+ Add Endpoint</string>
+    <string name="dt_count">1 request(s)</string>
+    <string name="dt_crash_app">Crash App (divide by 0)</string>
+    <string name="dt_custom_action">Custom Actions</string>
+    <string name="dt_delay">0 ms</string>
+    <string name="dt_send_web_request">Send Web Request</string>
+    <string name="dt_user_action">User Action</string>
+    <string name="dt_waterfall_request">Create waterfall with many requests</string>
+
+    <!-- Title Strings (title_) -->
+    <string name="title_activity_auto_instrumentation">AutomaticInstrumentationActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_manual_instrumentation">ManualInstrumentationActivity</string>
+    <string name="title_about_application">About the Application</string>
+    <string name="title_crash_reporting">Crash Reporting</string>
+    <string name="title_how_it_works">How it works</string>
+    <string name="title_lifecycle_monitoring">Lifecycle Monitoring</string>
+    <string name="title_plugin">Automatically Instrument with the Plugin</string>
+    <string name="title_sdk">Manually Instrument with the SDK</string>
+    <string name="title_user_action_monitoring">User Action Monitoring</string>
+    <string name="title_web_request_monitoring">Web Request Monitoring</string>
+
+    <!-- User Data Strings (user_data_) -->
+    <string name="user_data_hint_user_tag">Enter a user tag</string>
+    <string name="user_data_apply_tag">Click to apply tag</string>
+    <string name="user_data_dcl_off">Only a single anonymous user action is reported for the visit</string>
+    <string name="user_data_dcl_performance">Only performance data is captured. No data will be collected to track the user</string>
+    <string name="user_data_dcl_user_behavior">All data is collected including information to track the user across multiple visits</string>
+    <string name="user_data_off">Off</string>
+    <string name="user_data_performance">Performance</string>
+    <string name="user_data_behavior">User Behavior</string>
+
+    <!-- Informational message Strings (msg_) -->
+    <string name="msg_about_application">This Application was created as a learning tool to help teach Dynatrace Mobile Monitoring concepts and provide interactive examples\n\nWhile the app is designed to teach through use, it is also provided with the source code to see how it works programmatically, so feel free to review and play around with the project\n\nCurrently there are two primary activities to check out...\n\n1. Automatic Instrumentation Activity - Provides basic sandbox with functionality to be instrumented with the Dynatrace Android Gradle Plugin\n\n2. Manual Instrumentation Activity - Provides a sandbox to manually instrument with the SDK</string>
+    <string name="msg_about_user_actions">The Android Gradle Plugin automatically instruments user actions during build time by looking for common click-listeners.\n\nWhen a user clicks on an instrumented component such as a button, a user action is automatically created.</string>
+    <string name="msg_about_web_requests">Web Requests are automatically tagged and recorded by the Mobile OneAgent and if a request occurs during a user action, it will be added to the waterfall analysis.</string>
+    <string name="msg_about_crash_reporting">Unhandled Exceptions that result in crashes are automatically recorded by the mobile agent and upon restart, the agent will attempt to send the crash report to Dynatrace</string>
+    <string name="msg_about_lifecycle">Lifecycle events such as displaying or loading an activity are automatically recorded by Dynatrace. Lifecycle events are the behind-the-scene controls that occur as the user interacts with the application</string>
+
+    <!-- Error Message Strings (error_) -->
+
+    <!-- Preset URLs -->
+    <string-array name="url_list">
+        <item>https://dynatrace.com/support/help/how-to-use-dynatrace/real-user-monitoring/setup-and-configuration/mobile-apps</item>
+        <item>https://dynatrace.com/news/newsroom/</item>
+        <item>https://google.com/search?q=dynatrace+perform</item>
+        <item>https://bing.com/search?q=how+to+change+default+browser+to+google</item>
+        <item>https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags</item>
+        <item>https://twitter.com/Dynatrace</item>
+        <item>https://www.core77.com/posts/110412/Incredible-Shots-of-the-Breadboard-Prototype-for-the-First-iPod</item>
+        <item>https://ionicframework.com/</item>
+        <item>https://www.telerik.com/</item>
+    </string-array>
+
+
+    <!-- ______________________________________________________________________________________ -->
+
+    <!-- User Actions -->
+    <string name="monitoring_user_action">User Action Monitoring</string>
+    <string name="user_action">User Action</string>
+    <string name="enter_action">Enter Action</string>
+    <string name="leave_action">Leave Action</string>
+    <string name="custom_user_action">Custom User Action</string>
+
+    <string name="create_action">Create Action</string>
+    <string name="close_action">Close Action</string>
+
+    <string-array name="user_action_names">
+        <item>Next</item>
+        <item>Continue</item>
+        <item>Register</item>
+        <item>Login</item>
+        <item>Ok</item>
+        <item>Submit</item>
+    </string-array>
+
+    <string-array name="supported_user_action_sensors">
+        <item>android.view.View$OnClickListener</item>
+        <item>android.app.Activity.onOptionsItemSelected</item>
+        <item>android.view.MenuItem$OnMenuItemClickListener</item>
+        <item>android.widget.AdapterView$OnItemClickListener</item>
+        <item>android.widget.AdapterView$OnItemSelectedListener</item>
+    </string-array>
+
+    <!-- Web Requests -->
+    <string name="monitoring_web_request">Web Request Monitoring</string>
+    <string name="web_request">Send Web Request</string>
+    <string name="waterfall_request">Create waterfall with many requests</string>
+
+
+    <string-array name="supported_web_request_frameworks">
+        <item>HttpURLConnection</item>
+        <item>OkHttp: Only version 3 and 4</item>
+        <item>Apache HttpClient: Only the Android-internal HttpClient version</item>
+    </string-array>
+
+    <!-- Crash Reporting & Error Handling -->
+    <string name="crash_reporting">Crash reporting</string>
+
+    <!-- Lifecycle -->
+    <string name="monitoring_lifecycle">Lifecycle Monitoring</string>
+
+    <!-- User Data -->
+    <string name="user_tagging">User Tagging</string>
+    <string name="user_data">User Data</string>
+    <string name="user_privacy">User Privacy and Data Collection Levels</string>
+    <string name="sdk">SDK</string>
+
+    <!-- Header Strings -->
+    <string name="fragment_header_custom_actions">Create Custom Actions &amp; add events</string>
+
+
+    <!-- Button Strings -->
+    <string name="about">About this App</string>
+    <string name="launch">&gt;</string>
+
+
+    <!-- Labels -->
+
+
+
+
+
+
+    <!-- Header Strings -->
+    <string name="tag_user">Tag your session!</string>
+    <string name="session">Sessions</string>
+    <string name="create_user_action">Create a Custom Action and Leave when complete</string>
+    <string name="add_children">Add Web Requests and Children Actions</string>
+    <string name="report_events">Report values and events</string>
+    <string name="topic">Topic</string>
+    <string name="concept">Concept</string>
+    <string name="caught_error">Catch Exception (Malformed URL)</string>
+    <string name="reporting">Report Events and Values</string>
+    <string name="troubleshooting">Troubleshooting</string>
+
+
+    <!-- Button Texts -->
+    <string name="change_button_text">Replace button text</string>
+    <string name="modify_user_action">Extend and Modify User Actions</string>
+    <string name="apply_tag">Apply Tag</string>
+    <string name="create_child_action">Create Child Action</string>
+    <string name="close_child_action">Close Child action</string>
+    <string name="leave_child">Leave child</string>
+    <string name="request_url">https://search.dynatrace.com/#q=Android&amp;t=All</string>
+    <string name="instrumentation_banner">Instrumentation Sandbox</string>
+    <string name="concepts_banner">Concepts and Troubleshooting</string>
+    <string name="concepts">Concepts</string>
+    <string name="event">Event</string>
+    <string name="report_value">value</string>
+    <string name="note">Note</string>
+    <string name="report_error">error</string>
+    <string name="automatic_instrumentation">Automatic</string>
+    <string name="manual_instrumentation">Manual</string>
+    <string name="question_mark">?</string>
+    <string name="web_request_delay">Send Web Request(s) with a delay</string>
+
+
+    <!-- Hints -->
+    <string name="user_action_name">Enter a name for the user action</string>
+    <string name="user_tag">Enter User Tag</string>
+    <string name="url">Url</string>
+    <string name="requests_to_send">1 call(s)</string>
+    <string name="change_url">Specify a URL</string>
+
+
+    <!-- Content Descriptions -->
+    <string name="content_description_image1">Dynatrace Plugin Logo</string>
+    <string name="content_description_image2">Dynatrace SDK Logo</string>
+
+
+</resources>

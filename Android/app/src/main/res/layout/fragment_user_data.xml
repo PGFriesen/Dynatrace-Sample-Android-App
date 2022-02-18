@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDataFragment"
+    android:fillViewport="true">
+
+    <!-- TODO: clean up layout to adhere to rules
+    https://github.com/umesh0492/android-guidelines/blob/master/project_and_code_guidelines.md
+    -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/layout_user_tagging"
+            style="?card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_user_tagging_banner"
+                style="?textLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/user_tagging"/>
+
+            <EditText
+                android:id="@+id/text_user_tag"
+                style="?editTextBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_data_hint_user_tag"
+                android:layout_below="@id/text_user_tagging_banner"/>
+
+            <Button
+                android:id="@+id/button_apply_tag"
+                style="?buttonDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_user_tag"
+                android:onClick="onClickUserData"
+                android:text="@string/user_data_apply_tag" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_user_data"
+            style="?card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_user_tagging">
+
+            <TextView
+                android:id="@+id/text_privacy_banner"
+                style="?textLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/user_privacy"/>
+
+            <Button
+                android:id="@+id/button_about_privacy_options"
+                style="?buttonDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_privacy_banner"
+                android:onClick="onClickUserData"
+                android:text="@string/title_how_it_works"/>
+
+            <LinearLayout
+                android:id="@+id/layout_privacy_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button_about_privacy_options"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layout_off"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_off"
+                        style="?buttonDefault"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:layout_gravity="start"
+                        android:onClick="onClickUserData"
+                        android:text="@string/user_data_off"/>
+
+                    <TextView
+                        android:id="@+id/text_off"
+                        style="?textSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:layout_gravity="start"
+                        android:text="@string/user_data_dcl_off"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_performance"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_performance"
+                        style="?buttonDefault"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight="4"
+                        android:onClick="onClickUserData"
+                        android:text="@string/user_data_performance"/>
+
+                    <TextView
+                        android:id="@+id/text_performance"
+                        style="?textSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:layout_gravity="start"
+                        android:text="@string/user_data_dcl_performance"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_user_behavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_user_behavior"
+                        style="?buttonDefault"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight="4"
+                        android:onClick="onClickUserData"
+                        android:text="@string/user_data_behavior"/>
+
+                    <TextView
+                        android:id="@+id/text_user_behavior"
+                        style="?textSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:layout_gravity="start"
+
+                        android:text="@string/user_data_dcl_user_behavior"
+                        android:textColor="#000000"
+                        android:textAlignment="viewStart"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
