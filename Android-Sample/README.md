@@ -18,8 +18,42 @@ Use this README.md guide to download and set up this sample Native Android Appli
 
 ## Download and Run Application
 
+b
+b
+b
+b
+b
+b
+b
+
+b
+b
+b
+b
 
 ## Set-up for Automatic Instrumentation
+aa
+a
+a
+a
+
+a
+a
+a
+a
+a
 
 
 ## Set-up for Manual Instrumentation
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+
+g
