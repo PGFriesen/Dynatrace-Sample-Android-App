@@ -9,28 +9,39 @@ Use this README.md guide to download and set up this sample Native Android Appli
   - [<a name="download-and-run-application"></a> Download and Run Application](#-download-and-run-application)
   - [<a name="set-up-for-automatic-instrumentation"></a> Set-up for Automatic Instrumentation](#-set-up-for-automatic-instrumentation)
 
+
 ## <a name="pre-reqs"></a> Pre-requisites
 - Android Studio Installed
 - Emulator Created in Android Studio or Physical Device with USB Debugging enabled
+  - (Note: Emulators cannot be run inside of virtual machines, so make sure you are running from a phyiscal host)
 
 
 ## <a name="download-and-run-application"></a> Download and Run Application
-1. Download the project from bitbucket, save it anywhere on your machine (Note: Emulators cannot be run inside of virtual machines, so make sure you are running from a phyiscal host)<br>
+1. Download the project from bitbucket
+   - Option 1: Git Clone
+     - `cd <location where the project will be saved to>`
+     - `git clone ssh://git@bitbucket.lab.dynatrace.org/~paul.friesen/sample-mobile-applications.git`
+   - Option 2: Manually download and save
+     - Navigate to project URL: https://bitbucket.lab.dynatrace.org/users/paul.friesen/repos/sample-mobile-applications/browse 
+     - Under "Source", next to the branch name "main" select the "..." and click download
+       - Save it anywhere on your machine
+<br>
 
-<img src="../resources/screenshots/download_project.png" alt="example download" width="200"/>
+2. Open Project in Android Studio
+   - Select "Open Existing Project"
+   - Navigate to the location where you saved <b>sample-mobile-applications</b>
+   - Select <b>Android-Sample</b> and click open
+   - If prompted with "Project comes from an unknown source, do you want to trust it?" select <b>trust authors</b>
+   - Wait for project to sync
+     - In the Project files section on the left side of the IDE, you may notice that it says <b>Project</b> and when the sync is complete and the project is recognized as an Android project, you'll want to select the dropdown and select <b>Android</b>
+<br>
 
-2. Start Android Studio and select "open" and select the directory containing the gradle files. If you are using windows, you'll see an Android Icon in the project explorer window on the project you want to open<br>
-
-<img src="../resources/screenshots/open_project.png" alt="open project" width="200"/>
-
-
-3. You may be prompted that the project comes from an unknown source, if so, select "trust authors" and let the project load, when it is done, you should be able to set the Project Structure to "Android"<br>
-
-<img src="../resources/screenshots/ide_overview.png" alt="ide overview" width="1000"/>
-
-Here are some descriptions of different files that are mainly worked with in Android projects<br>
-<img src="../resources/screenshots/project_overview.png" alt="android files" width="1000"/>
-
+3. Build and run the project
+   - Select <b>File > Sync Project with Gradle Files</b>
+   - Select <B>Build > Make Project </b>
+   - Select <b>Run > Run 'App'</b> or click the green triangle play button
+     - The application will then build and run on the most recently used emulator
+     - (If the emulator is not running, running should start it, but if not, ensure the emulator is created and can be run on its own)
 
 
 ## <a name="set-up-for-automatic-instrumentation"></a> Set-up for Automatic Instrumentation
@@ -48,4 +59,4 @@ Once complete, it should look like this<br>
 3. Run a gradle sync to save the changes to the gradle file and build the application - <b>File > Sync Project with Gradle Files</b><br>
 <img src="../resources/screenshots/gradle_sync.png" alt="gradle sync" width="600"/>
 
-
+4. Select <b>Run > Run 'app'</b>

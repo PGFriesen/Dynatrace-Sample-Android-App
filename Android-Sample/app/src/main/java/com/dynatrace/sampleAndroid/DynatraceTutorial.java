@@ -3,7 +3,13 @@ package com.dynatrace.sampleAndroid;
 import android.content.Context;
 import android.util.Log;
 import com.dynatrace.android.agent.DTXAction;
+import com.dynatrace.android.agent.Dynatrace;
 import com.dynatrace.android.agent.conf.DataCollectionLevel;
+import com.dynatrace.android.agent.conf.UserPrivacyOptions;
+import com.dynatrace.android.api.Configuration;
+import com.dynatrace.android.api.DynatraceSessionReplay;
+import com.dynatrace.android.api.privacy.MaskingConfiguration;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,9 +21,7 @@ import okhttp3.Response;
 
 public class DynatraceTutorial {
 
-    private Context context;
     private OkHttpClient client;
-//    private Toaster toaster;
 
     // Data Collection Levels
     private final int OFF = 0;
@@ -31,7 +35,6 @@ public class DynatraceTutorial {
      * @param c context for
      */
     public DynatraceTutorial(Context c){
-        this.context = c;
         this.client = new OkHttpClient();
     }
 
@@ -111,6 +114,8 @@ public class DynatraceTutorial {
     public DTXAction createCustomAction(String actionName){
         DTXAction customAction = null;
 
+        customAction = Dynatrace.enterAction(actionName);
+
         return customAction;
     }
 
@@ -137,7 +142,7 @@ public class DynatraceTutorial {
      * @param userTag string to use for the tag
      */
     public void tagSession(String userTag){
-
+        Dynatrace.identifyUser(userTag);
     }
 
 
@@ -212,17 +217,40 @@ public class DynatraceTutorial {
     public void setDataCollection(int level){
 
         DataCollectionLevel newLevel = DataCollectionLevel.USER_BEHAVIOR;
+        boolean crashReporting = false;
+        boolean replayOnCrashes = false;
+
+        MaskingConfiguration config = new MaskingConfiguration.Safest();  // .Safe or .Custom
+
         switch(level){
             case OFF:
                 newLevel = DataCollectionLevel.OFF;
                 break;
             case PERFORMANCE:
                 newLevel = DataCollectionLevel.PERFORMANCE;
+                crashReporting = true;
+
+                config = new MaskingConfiguration.Safest();  // .Safe or .Custom
+                replayOnCrashes = true;
                 break;
             case USER_BEHAVIOR:
                 newLevel = DataCollectionLevel.USER_BEHAVIOR;
+                crashReporting = true;
+
+                config = new MaskingConfiguration.Safe();  // .Safest or .Custom
+                replayOnCrashes = true;
                 break;
         }
+
+        Dynatrace.applyUserPrivacyOptions(UserPrivacyOptions.builder()
+                .withDataCollectionLevel(newLevel)
+                .withCrashReportingOptedIn(crashReporting)
+                .withCrashReplayOptedIn(replayOnCrashes)
+                .build());
+
+        DynatraceSessionReplay.setConfiguration(Configuration.builder()
+                .withMaskingConfiguration(config)
+                .build());
     }
 }
 
