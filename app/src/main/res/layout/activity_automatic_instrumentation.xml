@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:context=".AutomaticInstrumentationActivity">
+
+    <!-- ScrollViews can only have a single RelativeLayout so this acts as a wrapper -->
+    <RelativeLayout
+        android:id="@+id/scrollViewChild"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_user_actions"
+            style="?card"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/text_user_actions"
+                style="?textLarge"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:text="@string/title_user_action_monitoring"/>
+
+            <Button
+                android:id="@+id/button_about_user_actions"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/text_user_actions"
+                android:onClick="onButtonTouch"
+                android:text="@string/title_how_it_works" />
+
+            <Button
+                android:id="@+id/button_user_action"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/button_about_user_actions"
+                android:onClick="onButtonTouch"
+                android:text="@string/dt_user_action" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_web_requests"
+            style="?card"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relative_layout_user_actions">
+
+            <TextView
+                android:id="@+id/text_web_requests"
+                style="?textLarge"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:text="@string/title_web_request_monitoring" />
+
+            <Button
+                android:id="@+id/button_about_web_requests"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/text_web_requests"
+                android:onClick="onButtonTouch"
+                android:text="@string/title_how_it_works" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_web_requests"
+                style="?layoutRow"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/button_about_web_requests"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_send_web_request"
+                    style="?buttonDefault"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/dt_send_web_request"
+                    android:onClick="onButtonTouch" />
+
+                <Button
+                    android:id="@+id/button_add_url"
+                    style="?buttonDefault"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/dt_add_url"
+                    android:onClick="onButtonTouch" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_layout_web_requests"
+                android:dropDownWidth="wrap_content"
+                android:entries="@array/url_list"
+                android:spinnerMode="dialog" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_request_delay"
+                style="?layoutRow"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/spinner_url">
+
+                <TextView
+                    android:id="@+id/text_request_delay"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:gravity="right"
+                    android:layout_weight="2"
+                    android:text="@string/dt_delay" />
+
+                <SeekBar
+                    android:id="@+id/seekbar_request_delay"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:indeterminate="false"
+                    android:layout_weight="10"
+                    android:min="0"
+                    android:max="5000" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_web_request_waterfall"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/linear_layout_request_delay"
+                android:onClick="onButtonTouch"
+                android:text="@string/dt_waterfall_request" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_request_count"
+                style="?layoutRow"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/button_web_request_waterfall">
+
+                <TextView
+                    android:id="@+id/text_request_count"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/dt_count"
+                    android:gravity="right" />
+
+                <SeekBar
+                    android:id="@+id/seekbar_request_count"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:indeterminate="false"
+                    android:min="1"
+                    android:max="15" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_crash_reporting"
+            style="?card"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relative_layout_web_requests">
+
+            <TextView
+                android:id="@+id/text_crash_reporting"
+                style="?textLarge"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:text="@string/title_crash_reporting" />
+
+            <Button
+                android:id="@+id/button_about_crash_reporting"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/text_crash_reporting"
+                android:text="@string/title_how_it_works"
+                android:onClick="onButtonTouch"/>
+
+            <Button
+                android:id="@+id/button_crash_application"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/button_about_crash_reporting"
+                android:onClick="onButtonTouch"
+                android:text="@string/dt_crash_app" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_lifecycle"
+            style="?card"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relative_layout_crash_reporting">
+
+            <TextView
+                android:id="@+id/text_lifecycle"
+                style="?textLarge"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:text="@string/title_lifecycle_monitoring" />
+
+            <Button
+                android:id="@+id/button_about_lifecycle"
+                style="?buttonDefault"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/text_lifecycle"
+                android:text="@string/title_how_it_works"
+                android:onClick="onButtonTouch"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

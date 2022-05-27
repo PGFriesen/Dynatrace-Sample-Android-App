@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "MERGED_MANIFESTS",
+    "kind": "Directory"
+  },
+  "applicationId": "com.dynatrace.sampleAndroid.demo",
+  "variantName": "demoDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 1,
+      "versionName": "1.0-demo",
+      "outputFile": "AndroidManifest.xml"
+    }
+  ]
+}

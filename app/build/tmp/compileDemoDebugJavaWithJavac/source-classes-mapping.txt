@@ -1,0 +1,39 @@
+com/dynatrace/sampleAndroid/TooltipDialog.java
+ com.dynatrace.sampleAndroid.TooltipDialog
+ com.dynatrace.sampleAndroid.TooltipDialog$1
+com/dynatrace/sampleAndroid/DynatraceTutorial.java
+ com.dynatrace.sampleAndroid.DynatraceTutorial
+ com.dynatrace.sampleAndroid.DynatraceTutorial$1
+ com.dynatrace.sampleAndroid.DynatraceTutorial$2
+com/dynatrace/sampleAndroid/TooltipHelper.java
+ com.dynatrace.sampleAndroid.TooltipHelper
+com/dynatrace/sampleAndroid/UserDataFragment.java
+ com.dynatrace.sampleAndroid.UserDataFragment
+com/dynatrace/sampleAndroid/MainActivity.java
+ com.dynatrace.sampleAndroid.MainActivity
+ com.dynatrace.sampleAndroid.MainActivity$1
+ com.dynatrace.sampleAndroid.MainActivity$2
+ com.dynatrace.sampleAndroid.MainActivity$3
+ com.dynatrace.sampleAndroid.MainActivity$3$1
+com/dynatrace/sampleAndroid/BuildConfig.java
+ com.dynatrace.sampleAndroid.BuildConfig
+com/dynatrace/sampleAndroid/AutomaticInstrumentationActivity.java
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$1
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$2
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$3
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$4
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$5
+ com.dynatrace.sampleAndroid.AutomaticInstrumentationActivity$6
+com/dynatrace/sampleAndroid/ManualInstrumentationActivity.java
+ com.dynatrace.sampleAndroid.ManualInstrumentationActivity
+ com.dynatrace.sampleAndroid.ManualInstrumentationActivity$1
+ com.dynatrace.sampleAndroid.ManualInstrumentationActivity$2
+ com.dynatrace.sampleAndroid.ManualInstrumentationActivity$3
+com/dynatrace/sampleAndroid/ManualInstrumentationFragment.java
+ com.dynatrace.sampleAndroid.ManualInstrumentationFragment
+ com.dynatrace.sampleAndroid.ManualInstrumentationFragment$1
+ com.dynatrace.sampleAndroid.ManualInstrumentationFragment$2
+ com.dynatrace.sampleAndroid.ManualInstrumentationFragment$3
+com/dynatrace/sampleAndroid/Toaster.java
+ com.dynatrace.sampleAndroid.Toaster
