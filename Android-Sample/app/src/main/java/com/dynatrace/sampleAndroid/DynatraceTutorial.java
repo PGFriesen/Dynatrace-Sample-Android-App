@@ -6,9 +6,6 @@ import com.dynatrace.android.agent.DTXAction;
 import com.dynatrace.android.agent.Dynatrace;
 import com.dynatrace.android.agent.conf.DataCollectionLevel;
 import com.dynatrace.android.agent.conf.UserPrivacyOptions;
-import com.dynatrace.android.api.Configuration;
-import com.dynatrace.android.api.DynatraceSessionReplay;
-import com.dynatrace.android.api.privacy.MaskingConfiguration;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,11 +25,12 @@ public class DynatraceTutorial {
     private final int PERFORMANCE = 1;
     private final int USER_BEHAVIOR = 2;
 
+    // Random Number Generator for generating random values to report
     private static final Random RAND = new Random();
 
     /**
      * Constructor
-     * @param c context for
+     * @param c context
      */
     public DynatraceTutorial(Context c){
         this.client = new OkHttpClient();
@@ -44,8 +42,8 @@ public class DynatraceTutorial {
      * @param requestDelay - Delay to wait before request is fired off
      */
     public void singleWebRequest(String url, int requestDelay) {
-        // Create a new thread for Web Request - Networking not allowed on main thread
 
+        // Create a new thread for Web Request - Networking not allowed on main thread
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
@@ -93,8 +91,6 @@ public class DynatraceTutorial {
 
     /**
      * Crash the application with an unhandled exception
-     *
-     * "Wait. That's illegal"
      */
     public void crashApplication(){
         System.out.println(2/0);
@@ -102,39 +98,33 @@ public class DynatraceTutorial {
 
 
     /**
-     * *********************************************************************************************
-     * All of the below methods are used for Manually Instrumenting with the SDK
-     * *********************************************************************************************
+     * ***************************************************************************
+     * All of the below methods are used for Manually Instrumenting with the SDK *
+     * ***************************************************************************
      */
 
     /**
      * Create a custom user action
-     * @param actionName string name to use for the custom action
+     * @param actionName name to use for the custom action
      */
     public DTXAction createCustomAction(String actionName){
-        DTXAction customAction = null;
-
-        customAction = Dynatrace.enterAction(actionName);
-
-        return customAction;
+        return Dynatrace.enterAction(actionName);
     }
 
     /**
      * Close out a custom user action
-     * @param action the user action to be closed
+     * @param customAction the user action to be closed
      */
-    public void closeCustomAction(DTXAction action){
-
+    public void closeCustomAction(DTXAction customAction){
+        customAction.leaveAction();
     }
 
     /**
      * Create a custom child action
      * @param parentAction the parent action of the child action to be created
      */
-    public DTXAction createChildAction(DTXAction parentAction){
-        DTXAction childAction = null;
-
-        return childAction;
+    public DTXAction createChildAction(String childActionName, DTXAction parentAction){
+        return Dynatrace.enterAction(childActionName, parentAction);
     }
 
     /**
@@ -184,6 +174,7 @@ public class DynatraceTutorial {
      */
     public void reportEvent(DTXAction userAction){
         String event = "String value to report as a standalone event";
+        userAction.reportEvent(event);
     }
 
 
@@ -193,6 +184,7 @@ public class DynatraceTutorial {
      */
     public void reportValue(DTXAction userAction) {
         int randomInteger = RAND.nextInt(); // use a randomly generated integer to report a value
+        userAction.reportValue("SomeTestValue", 42);
     }
 
 
@@ -204,8 +196,8 @@ public class DynatraceTutorial {
         try {
             URL url = new URL("httpSUPERSECRET::::::://////");
         } catch (MalformedURLException m) {
+            userAction.reportError("URL Error", m);
             m.printStackTrace();
-
         }
     }
 
@@ -216,29 +208,21 @@ public class DynatraceTutorial {
      */
     public void setDataCollection(int level){
 
-        DataCollectionLevel newLevel = DataCollectionLevel.USER_BEHAVIOR;
-        boolean crashReporting = false;
-        boolean replayOnCrashes = false;
-
-        MaskingConfiguration config = new MaskingConfiguration.Safest();  // .Safe or .Custom
+        DataCollectionLevel newLevel = DataCollectionLevel.OFF;
+        boolean crashReporting = true;
+        boolean replayOnCrashes = true;
 
         switch(level){
             case OFF:
                 newLevel = DataCollectionLevel.OFF;
+                crashReporting = false;
+                replayOnCrashes = false;
                 break;
             case PERFORMANCE:
                 newLevel = DataCollectionLevel.PERFORMANCE;
-                crashReporting = true;
-
-                config = new MaskingConfiguration.Safest();  // .Safe or .Custom
-                replayOnCrashes = true;
                 break;
             case USER_BEHAVIOR:
                 newLevel = DataCollectionLevel.USER_BEHAVIOR;
-                crashReporting = true;
-
-                config = new MaskingConfiguration.Safe();  // .Safest or .Custom
-                replayOnCrashes = true;
                 break;
         }
 
@@ -248,9 +232,6 @@ public class DynatraceTutorial {
                 .withCrashReplayOptedIn(replayOnCrashes)
                 .build());
 
-        DynatraceSessionReplay.setConfiguration(Configuration.builder()
-                .withMaskingConfiguration(config)
-                .build());
     }
 }
 

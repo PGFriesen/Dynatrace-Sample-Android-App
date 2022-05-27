@@ -101,11 +101,11 @@
 
             <Spinner
                 android:id="@+id/spinner_url"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_layout_web_requests"
                 android:dropDownWidth="wrap_content"
                 android:entries="@array/url_list"
-                android:layout_below="@+id/linear_layout_web_requests"
                 android:spinnerMode="dialog" />
 
             <LinearLayout

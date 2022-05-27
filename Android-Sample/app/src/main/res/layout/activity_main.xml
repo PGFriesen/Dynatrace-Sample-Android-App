@@ -27,9 +27,17 @@
                 <Button
                     android:id="@+id/button_about"
                     style="?buttonDefault"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/title_about_application" />
+
+                <Button
+                    android:id="@+id/button_user_data"
+                    style="?buttonDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_about"
+                    android:text="@string/title_user_data" />
 
 
             </RelativeLayout>
@@ -89,12 +97,12 @@
 
                 <ImageView
                     android:id="@+id/image_sdk"
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:background="@color/background_dark_gray"
-                    android:contentDescription="@string/content_description_image2"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/title_manual_instrumentation"
                     android:layout_centerHorizontal="true"
+                    android:background="@color/background_dark_gray"
+                    android:contentDescription="@string/content_description_image2"
                     app:srcCompat="@drawable/ic_oneagent_sdk_shamrockgreen_700"
                     app:tint="@color/dt_green" />
 

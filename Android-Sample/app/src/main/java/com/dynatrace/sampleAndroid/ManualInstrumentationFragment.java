@@ -24,28 +24,31 @@ public class ManualInstrumentationFragment extends Fragment {
     private ArrayList<String> listEndpoints;            // List of URLs available for spinner
     private ArrayList<View> listButtonViews;            // List of button view objects for fragment
     private DTXAction parentAction;                     // Reference to current open custom action
+    private int numberOfChildren;                       // Reference to total number of children actions created
     private String selectedUrl;                         // Reference to URL selected by spinner
     private Spinner spinner;                            // Reference to spinner object for URLs
     private View view;                                  // View reference for fragment
     private final Toaster toaster;                      // Reference to toaster for displaying toasts
     private final DynatraceTutorial davis;              // Reference to Dynatrace tutorial class
-    private TooltipHelper tooltips;
+    private final TooltipHelper tooltips;               // Reference to tooltip class that displays dialogues
 
 
-    // Constructor - takes reference to DynatraceTutorial class
+    /**
+     *  Constructor for fragment
+     * @param davis Dynatrace SDK "wrapper" where we actually call the Dynatrace SDK
+     * @param toaster Tooltips class that is used to show tooltip dialogues to the user
+     * @param tooltips Toaster class that helps us provide toasts to the user
+     */
     public ManualInstrumentationFragment(DynatraceTutorial davis, Toaster toaster, TooltipHelper tooltips){
         this.davis = davis;
         this.tooltips = tooltips;
         this.toaster = toaster;
     }
 
-    @Override
+    @Override // Override method to Inflate the layout for this fragment to the activity
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         this.view = inflater.inflate(R.layout.fragment_instrumentation_manual, container, false);
-
         initializeFragment();
-
         return view;
     }
 
@@ -61,22 +64,18 @@ public class ManualInstrumentationFragment extends Fragment {
         switch(buttonView.getId()){
             case R.id.button_create_action:
                 onCreateAction();
-                updateButtonStates(buttonView);
                 toastMessage = "Custom User Action created with name: " + ((EditText)view.findViewById(R.id.text_user_action_name)).getText().toString();
                 break;
             case R.id.button_close_action:
                 onCloseAction();
-                updateButtonStates(buttonView);
                 toastMessage = "Action closed";
                 break;
             case R.id.button_create_child_action:
                 onCreateChildAction();
-                updateButtonStates(buttonView);
                 toastMessage = "Created Child Action";
                 break;
             case R.id.button_close_child_action:
                 onCloseChildAction();
-                updateButtonStates(buttonView);
                 toastMessage = "Closed most recently opened child action";
                 break;
             case R.id.button_send_web_request:
@@ -103,7 +102,19 @@ public class ManualInstrumentationFragment extends Fragment {
                 break;
         }
 
-        toaster.toast(view.getContext(),toastMessage, Toast.LENGTH_LONG);
+        toaster.toast(view.getContext(),toastMessage, Toast.LENGTH_LONG); // Display a toast to the user
+
+        // Update the buttons to reflect the state of this fragment
+        // TODO fix this monstrosity of code for button handling, there has to be a better way
+        switch(buttonView.getId()){
+            case R.id.button_create_action:
+            case R.id.button_close_action:
+            case R.id.button_create_child_action:
+            case R.id.button_close_child_action:
+                updateButtonStates(buttonView);
+                break;
+
+        }
     }
 
     /** 'Enter Action' button is pressed
@@ -116,7 +127,8 @@ public class ManualInstrumentationFragment extends Fragment {
             userActionName = "Custom User Action";
         }
 
-        parentAction = davis.createCustomAction(userActionName);
+        parentAction = davis.createCustomAction(userActionName); // Create the custom action and set the reference
+        numberOfChildren = 0; // Set the number of children actions to zero
     }
 
 
@@ -128,16 +140,18 @@ public class ManualInstrumentationFragment extends Fragment {
         // Clear the reference to the parentAction and the list of children actions
         parentAction = null;
         listChildrenActions.clear();
+        numberOfChildren = 0;
     }
 
 
     /** 'Create Child Action' button is pressed
     Add a child action to the open parent action */
     private void onCreateChildAction(){
-        DTXAction childAction = davis.createChildAction(parentAction);
+        numberOfChildren ++; // Increment the counter for number of children actions
+        String childActionName = "Child Action #" + String.valueOf(numberOfChildren);
 
-        // Add the child action to the list and increment the counter
-        listChildrenActions.add(childAction);
+        DTXAction childAction = davis.createChildAction(childActionName, parentAction); // Create the child Action
+        listChildrenActions.add(childAction); // Add the child action to the list and increment the counter
     }
 
 
@@ -253,7 +267,7 @@ public class ManualInstrumentationFragment extends Fragment {
      */
     private void updateButtonStates(View buttonView){
 
-        // Loop through all buttons to compare with the button that was clicked
+        // Loop through all buttons and disable/enable based on whichever button was clicked (buttonView)
         for (View v : listButtonViews){
 
             // There are only 4 buttons that have an effect on other buttons in the fragment when clicked

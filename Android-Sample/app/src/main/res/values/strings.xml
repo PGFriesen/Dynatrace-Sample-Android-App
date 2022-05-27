@@ -21,6 +21,7 @@
     <string name="title_lifecycle_monitoring">Lifecycle Monitoring</string>
     <string name="title_plugin">Automatically Instrument with the Plugin</string>
     <string name="title_sdk">Manually Instrument with the SDK</string>
+    <string name="title_user_data"></string>
     <string name="title_user_action_monitoring">User Action Monitoring</string>
     <string name="title_web_request_monitoring">Web Request Monitoring</string>
 
@@ -117,14 +118,6 @@
     <!-- Button Strings -->
     <string name="about">About this App</string>
     <string name="launch">&gt;</string>
-
-
-    <!-- Labels -->
-
-
-
-
-
 
     <!-- Header Strings -->
     <string name="tag_user">Tag your session!</string>

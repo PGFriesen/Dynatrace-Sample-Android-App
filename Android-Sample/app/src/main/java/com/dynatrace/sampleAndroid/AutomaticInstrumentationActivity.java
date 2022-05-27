@@ -16,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dynatrace.android.agent.Dynatrace;
+import com.dynatrace.android.agent.ModifiableUserAction;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -42,7 +45,6 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         initializeActivity();
     }
 
-
     /**
      * Click Listener for all buttons in this activity with switch statement to handle logic
      * for the button that was touched
@@ -53,6 +55,11 @@ public class AutomaticInstrumentationActivity extends AppCompatActivity {
         switch(buttonView.getId()){
             case R.id.button_user_action:
                 toastMessage = "Basic User Action Created: 'Touch on " + ((Button) findViewById(R.id.button_user_action)).getText().toString() + "'";
+                Dynatrace.modifyUserAction(modifiableUserAction -> {
+                    modifiableUserAction.reportValue("MagicMobileMelon", "Are Melons Berries?");
+                    modifiableUserAction.reportValue("MagicMobileMelon", 42);
+                    modifiableUserAction.reportValue("MagicMobileMelon", 42);
+                });
                 randomizeButtonText(buttonView);
                 break;
 
