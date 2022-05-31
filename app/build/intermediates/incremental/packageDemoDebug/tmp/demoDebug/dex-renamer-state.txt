@@ -1,4 +1,0 @@
-#Fri May 27 16:23:24 EDT 2022
-base.0=/Users/paul.friesen/Desktop/Projects/sample-mobile-applications/Android-Sample/app/build/intermediates/dex/demoDebug/mergeProjectDexDemoDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
