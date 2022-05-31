@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true"
-    style="?card"
+    android:layout_height="match_parent"
+    style="?backgroundDefault"
     tools:context=".ManualInstrumentationActivity">
 
     <!-- TODO: clean up layout to adhere to rules
@@ -14,9 +13,10 @@
     -->
 
     <RelativeLayout
-        android:id="@+id/scrollViewChild"
+        android:id="@+id/layout_custom_actions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        style="?card">
 
         <TextView
             android:id="@+id/textFragmentHeader"
@@ -105,59 +105,51 @@
                 android:onClick="onButtonClick" />
         </LinearLayout>
 
-    <!--        <TextView-->
-    <!--            android:id="@+id/textViewChildActionBanner"-->
-    <!--            style="?textLarge"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:gravity="center_horizontal"-->
-    <!--            android:text="@string/add_children" />-->
-
-    <LinearLayout
-        android:id="@+id/row3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/row2"
-        android:orientation="horizontal"
-        style="?layoutRow">
-
-        <Button
-            android:id="@+id/button_send_web_request"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="?buttonDefault"
-            android:onClick="onButtonClick"
-            android:enabled="false"
-            android:text="@string/web_request" />
+            android:layout_below="@+id/row2"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
-        <Button
-            android:id="@+id/button_add_url"
-            android:layout_width="0dp"
+            <Button
+                android:id="@+id/button_send_web_request"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="?buttonDefault"
+                android:onClick="onButtonClick"
+                android:enabled="false"
+                android:text="@string/web_request" />
+
+            <Button
+                android:id="@+id/button_add_url"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="?buttonDefault"
+                android:onClick="onButtonClick"
+                android:enabled="false"
+                android:text="@string/dt_add_url" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerUrl"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="?buttonDefault"
-            android:onClick="onButtonClick"
-            android:enabled="false"
-            android:text="@string/dt_add_url" />
-    </LinearLayout>
+            android:layout_below="@+id/row3"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/url_list"
+            android:spinnerMode="dialog" />
 
-    <Spinner
-        android:id="@+id/spinnerUrl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/row3"
-        android:dropDownWidth="wrap_content"
-        android:entries="@array/url_list"
-        android:spinnerMode="dialog" />
-
-    <LinearLayout
-        android:id="@+id/row4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerUrl"
-        android:orientation="horizontal"
-        style="?layoutRow">
+        <LinearLayout
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerUrl"
+            android:orientation="horizontal"
+            style="?layoutRow">
 
             <Button
                 android:id="@+id/button_report_value"
@@ -193,4 +185,4 @@
                 android:text="@string/report_error" />
         </LinearLayout>
     </RelativeLayout>
-</ScrollView>
+</RelativeLayout>

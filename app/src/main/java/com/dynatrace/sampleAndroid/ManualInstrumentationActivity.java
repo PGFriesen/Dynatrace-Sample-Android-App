@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,14 +28,16 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
     private ArrayList<DTXAction> listChildrenActions;   // List of child actions that are open
     private ArrayList<String> listEndpoints;            // List of URLs available for spinner
     private ArrayList<View> listButtonViews;            // List of button view objects for fragment
-    private DTXAction parentAction;                     // Reference to current open custom action
-    private int numberOfChildren;                       // Reference to total number of children actions created
-    private String selectedUrl;                         // Reference to URL selected by spinner
-    private Spinner spinner;                            // Reference to spinner object for URLs
-    private View view;                                  // View reference for fragment
-    private Toaster toaster;                      // Reference to toaster for displaying toasts
-    private DynatraceTutorial davis;              // Reference to Dynatrace tutorial class
-    private TooltipHelper tooltips;               // Reference to tooltip class that displays dialogues
+
+    private DTXAction parentAction;     // Currently Open Parent Action
+    private int numberOfChildren;       // Number of Children Actions added to Parent
+    private String selectedUrl;         // Selected URL to be used for web requests
+    private Spinner spinner;            // Dropdown list that contains different URLs to choose from
+
+    private Toaster toaster;            // Helper for displaying toasts to users
+    private TooltipHelper tooltips;     // Helper for creating tooltips for users
+    private DynatraceTutorial davis;    // Dynatrace SDK Helper
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         switch(buttonView.getId()){
             case R.id.button_create_action:
                 onCreateAction();
-                toastMessage = "Custom User Action created with name: " + ((EditText)view.findViewById(R.id.text_user_action_name)).getText().toString();
+                toastMessage = "Custom User Action created with name: " + ((EditText) findViewById(R.id.text_user_action_name)).getText().toString();
                 break;
             case R.id.button_close_action:
                 onCloseAction();
@@ -93,15 +97,11 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
                 onAddUrl();
                 break;
             case R.id.button_about_custom_events:
-                //tooltips.showDialog(getParentFragmentManager(), "About Custom Actions");
                 tooltips.showDialog(getSupportFragmentManager(), "About Custom Actions");
                 break;
         }
 
-        toaster.toast(view.getContext(),toastMessage, Toast.LENGTH_LONG); // Display a toast to the user
-
         // Update the buttons to reflect the state of this fragment
-        // TODO fix this monstrosity of code for button handling, there has to be a better way
         switch(buttonView.getId()){
             case R.id.button_create_action:
             case R.id.button_close_action:
@@ -111,12 +111,15 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
                 break;
 
         }
+
+        // Display a toast to users to confirm the action taken
+        toaster.toast(getApplicationContext(), toastMessage, Toast.LENGTH_LONG);
     }
 
     /** 'Enter Action' button is pressed
      Manually Create a User Action with provided name */
     private void onCreateAction(){
-        String userActionName = ((EditText) view.findViewById(R.id.text_user_action_name)).getText().toString();
+        String userActionName = ((EditText) findViewById(R.id.text_user_action_name)).getText().toString();
 
         // If a zero-length string was provided, give it a basic custom action name
         if (userActionName.length() <= 0){
@@ -192,29 +195,29 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
      * Add a URL to the list of URL's to make requests to
      */
     private void onAddUrl(){
-        // Create the Alert Dialog and listeners for adding URLs to spinner
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-
-        // Create the EditText to use for entering in a new URL and set the dialog with it
-        EditText newUrl = new EditText(view.getContext());
-        builder.setView(newUrl);
-
-        // Set the listeners for the dialog buttons "Add URL" and "Cancel"
-        builder.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int whichButton){
-                listEndpoints.add(newUrl.getText().toString());
-                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, listEndpoints);
-                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(spinnerAdapter);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Do nothing
-            }
-        });
-
-        builder.show();
+//        // Create the Alert Dialog and listeners for adding URLs to spinner
+//        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+//
+//        // Create the EditText to use for entering in a new URL and set the dialog with it
+//        EditText newUrl = new EditText(view.getContext());
+//        builder.setView(newUrl);
+//
+//        // Set the listeners for the dialog buttons "Add URL" and "Cancel"
+//        builder.setPositiveButton("Add URL", new DialogInterface.OnClickListener(){
+//            public void onClick(DialogInterface dialog, int whichButton){
+//                listEndpoints.add(newUrl.getText().toString());
+//                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, listEndpoints);
+//                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                spinner.setAdapter(spinnerAdapter);
+//            }
+//        });
+//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                // Do nothing
+//            }
+//        });
+//
+//        builder.show();
     }
 
 
@@ -239,8 +242,9 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         listButtonViews.add(findViewById(R.id.text_user_action_name));
 
         // Initialize spinner for URLs
-        this.spinner = findViewById(R.id.spinnerUrl);
+        this.spinner = (Spinner) findViewById(R.id.spinnerUrl);
         this.listEndpoints = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.url_list)));
+
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(ManualInstrumentationActivity.this, android.R.layout.simple_spinner_item, listEndpoints);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);

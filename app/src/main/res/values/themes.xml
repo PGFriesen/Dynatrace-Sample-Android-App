@@ -23,6 +23,7 @@
     </style>
 
     <style name="Theme.Dynatrace.Light.Uem" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="backgroundDefault">@style/background_dark_gray</item>
         <item name="backgroundActivityPrimary">@style/background_white_gray</item>
         <item name="card">@style/card_view</item>
         <item name="buttonDefault">@style/button_violet</item>

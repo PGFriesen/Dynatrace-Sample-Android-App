@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
+    style="?backgroundDefault"
     tools:context=".AutomaticInstrumentationActivity">
 
     <!-- ScrollViews can only have a single RelativeLayout so this acts as a wrapper -->

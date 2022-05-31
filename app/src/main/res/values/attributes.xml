@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="backgroundDefault" format="reference"/>
     <attr name="backgroundActivityPrimary" format="reference"/>
     <attr name="backgroundActivitySecondary" format="reference"/>
     <attr name="card" format="reference"></attr>
