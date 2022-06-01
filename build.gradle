@@ -27,12 +27,19 @@ dynatrace {
     configurations {
         sampleConfig {
             autoStart {
-                applicationId '<applicationId>'
-                beaconUrl 'https://<beaconUrl>/mbeacon'
+                applicationId '<ApplicationId>'
+                beaconUrl 'https://<BeaconUrl>/mbeacon'
             }
-            userOptIn false
+            userOptIn true
             agentBehavior.startupLoadBalancing true
-            // debug.agentLogging true  // Enable Debug Output by OneAgent into Logcat (use 'dtx' filter)
+
+            // Set sessionReplay.enabled to true to participate in preview
+            // Requires 'userOptIn true'
+            sessionReplay.enabled true
+
+            // Enable Debug Output by OneAgent into Logcat (use 'dtx' filter)
+            // debug.agentLogging true
+
         }
     }
 }

@@ -51,6 +51,9 @@
     <string name="msg_about_web_requests">Web Requests are automatically tagged and recorded by the Mobile OneAgent and if a request occurs during a user action, it will be added to the waterfall analysis.</string>
     <string name="msg_about_crash_reporting">Unhandled Exceptions that result in crashes are automatically recorded by the mobile agent and upon restart, the agent will attempt to send the crash report to Dynatrace</string>
     <string name="msg_about_lifecycle">Lifecycle events such as displaying or loading an activity are automatically recorded by Dynatrace. Lifecycle events are the behind-the-scene controls that occur as the user interacts with the application</string>
+    <string name="msg_user_tagging">When DataCollectionLevel is set to USER_BEHAVIOR (not PERFORMANCE or OFF), then users can be tagged by calling Dynatrace.identifyUser() and passing a string value.\n\nIf the session ends, then the new session must be re-tagged</string>
+    <string name="msg_data_collection_level">There are three levels of DataCollectionLevel\n1. USER_BEHAVIOR - Track the user accross multiple visits\n2. PERFORMANCE - Track only Performance data (does not capture custom reported events or tags)\n3. OFF - No data is sent except a single anonymous action\n\nWhen UserOptIn true is enabled, then the API can be used to switch between these levels and the default value is OFF, but when UserOptIn is false, then the API does nothing and DataCollectionLevel stays at USER_BEHAVIOR</string>
+    <string name="msg_session_replay">When session replay is enabled, then crashes are recorded and sent to dynatrace to review.\n\nBy default, masking is set to safest which masks all editable text fields, images, webviews, and switches, whereas Masking.safe only masks editable text fields</string>
 
     <!-- Error Message Strings (error_) -->
 

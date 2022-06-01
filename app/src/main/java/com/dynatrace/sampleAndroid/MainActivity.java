@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("MainActivity");
     }
 
-
     /**
      * Start a new Activity using the intent created for Automatic or Manual Instrumentation Activity
      * Called when the user clicks on one of two main layouts
@@ -102,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Configure Session Replay Switches
         configureSessionReplay(dialog, privacyOptions);
+
+        // Configure tooltips for "How it works" buttons
+        configureTooltips(dialog);
 
         // Apply config changes with Privacy Options builder
         Button applyChanges = (Button) dialog.findViewById(R.id.button_apply_changes);
@@ -207,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
         CompoundButton.OnCheckedChangeListener switchListener = new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+
+                if (isChecked) {
                     // Set all Switches as "un-checked"
                     switchUserBehavior.setChecked(false);
                     switchPerformance.setChecked(false);
@@ -214,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Check the switch that was clicked
                     buttonView.setChecked(true);
+                }
             }
         };
 
@@ -223,6 +228,12 @@ public class MainActivity extends AppCompatActivity {
         switchOff.setOnCheckedChangeListener(switchListener);
     }
 
+    /**
+     * Configure the switches that control masking and whether or not session replay is enabled
+     *
+     * @param dialog The dialog object for the XML Layout View
+     * @param options The Privacy Options object
+     */
     private void configureSessionReplay(Dialog dialog, UserPrivacyOptions options){
         // Configure Switches for Session Replay and Masking
         Switch switchSessionReplayToggle = (Switch) dialog.findViewById(R.id.switch_enable_session_replay);
@@ -254,4 +265,62 @@ public class MainActivity extends AppCompatActivity {
         switchMaskingSafest.setOnCheckedChangeListener(switchListener);
         switchMaskingSafe.setOnCheckedChangeListener(switchListener);
     }
+
+    private void configureTooltips(Dialog dialog){
+        Button buttonTaggingTooltip = dialog.findViewById(R.id.button_about_user_tagging);
+        buttonTaggingTooltip.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogWindow = new AlertDialog.Builder(dialog.getContext());
+                dialogWindow.setTitle(getResources().getString(R.string.title_user_tagging));
+                dialogWindow.setMessage(getResources().getString(R.string.msg_user_tagging));
+
+                dialogWindow.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialogWindow.show(); // Display the dialogue window
+            }
+        });
+
+        Button buttonDataCollectionTooltip = dialog.findViewById(R.id.button_about_data_collection);
+        buttonDataCollectionTooltip.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogWindow = new AlertDialog.Builder(dialog.getContext());
+                dialogWindow.setTitle(getResources().getString(R.string.title_data_collection_level));
+                dialogWindow.setMessage(getResources().getString(R.string.msg_data_collection_level));
+
+                dialogWindow.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialogWindow.show(); // Display the dialogue window
+            }
+        });
+
+        Button buttonSessionReplayTooltip = dialog.findViewById(R.id.button_about_session_replay);
+        buttonSessionReplayTooltip.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogWindow = new AlertDialog.Builder(dialog.getContext());
+                dialogWindow.setTitle(getResources().getString(R.string.title_session_replay));
+                dialogWindow.setMessage(getResources().getString(R.string.msg_session_replay));
+
+                dialogWindow.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialogWindow.show(); // Display the dialogue window
+            }
+        });
+
+    }
+
 }
