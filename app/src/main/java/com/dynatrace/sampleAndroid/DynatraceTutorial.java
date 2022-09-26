@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import com.dynatrace.android.agent.DTXAction;
 import com.dynatrace.android.agent.Dynatrace;
+import com.dynatrace.android.agent.WebRequestTiming;
 import com.dynatrace.android.agent.conf.DataCollectionLevel;
 import com.dynatrace.android.agent.conf.UserPrivacyOptions;
 
@@ -145,12 +146,17 @@ public class DynatraceTutorial {
             @Override
             public void run() {
 
+                WebRequestTiming timing = Dynatrace.getWebRequestTiming(webRequestAction.getRequestTag());
+
                 // Create the Request object with the URL and add our header tag
                 Request request = new Request.Builder()
                         .url(url)
+                        .addHeader(webRequestAction.getRequestTagHeader(), webRequestAction.getRequestTag())
                         .build();
 
+//                timing.startWebRequestTiming();
                 try {
+
 
                     // Send the request
                     Response response = client.newCall(request).execute();
@@ -159,8 +165,11 @@ public class DynatraceTutorial {
                         // Handle response
                     }
 
+//                    timing.stopWebRequestTiming();
+
                 } catch (IOException e) {
                     e.printStackTrace();
+                    timing.stopWebRequestTiming();
                 }
 
             }});

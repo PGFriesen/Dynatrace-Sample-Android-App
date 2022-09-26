@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textFragmentHeader"
             android:onClick="onButtonClick"
-            android:text="@string/title_how_it_works"/>
+            android:text="@string/title_how_it_works" />
 
         <EditText
             android:id="@+id/text_user_action_name"

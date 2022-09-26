@@ -1,19 +1,11 @@
 package com.dynatrace.sampleAndroid;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -44,8 +36,8 @@ public class ManualInstrumentationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_instrumentation);
 
-        this.davis = new DynatraceTutorial(ManualInstrumentationActivity.this);
-        this.toaster = new Toaster();
+        davis = new DynatraceTutorial(ManualInstrumentationActivity.this);
+        toaster = new Toaster();
         this.tooltips = new TooltipHelper();
 
         initializeActivity();

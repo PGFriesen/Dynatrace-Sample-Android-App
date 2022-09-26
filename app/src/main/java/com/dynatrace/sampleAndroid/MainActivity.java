@@ -7,8 +7,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,31 +17,42 @@ import android.widget.Switch;
 import com.dynatrace.android.agent.Dynatrace;
 import com.dynatrace.android.agent.conf.DataCollectionLevel;
 import com.dynatrace.android.agent.conf.UserPrivacyOptions;
+
 import com.dynatrace.android.api.Configuration;
 import com.dynatrace.android.api.DynatraceSessionReplay;
 import com.dynatrace.android.api.privacy.MaskingConfiguration;
 
-import java.io.IOException;
-
-
 public class MainActivity extends AppCompatActivity {
+
+    private Tooltip tooltipHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.tooltipHelper = new Tooltip(MainActivity.this);
         getSupportActionBar().setTitle("MainActivity");
     }
 
     /**
      * Start a new Activity using the intent created for Automatic or Manual Instrumentation Activity
+     *
      * Called when the user clicks on one of two main layouts
      *
-     * @param view The Button (or Layout) that was clicked to start the new Activity
+     * @param view The view object for the layout being clicked on
      */
     public void onStartActivity(View view){
         Intent intent;
+
+        RelativeLayout StartActivityButton = (RelativeLayout) findViewById(R.id.relative_layout_automatic_instrumentation);
+        StartActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         switch(view.getId()){
             case R.id.relative_layout_automatic_instrumentation: // Launch Automatic Instrumentation Activity
                 intent = new Intent(getApplicationContext(), AutomaticInstrumentationActivity.class);
@@ -59,24 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Display a dialog window with a quick message about the application
+     *
      * Called when the user clicks on "About the Application"
      *
-     * @param view The view object for the "About the application" button
+     * @param view The view object for button being clicked
      */
     public void onAboutApplication(View view){
-        AlertDialog.Builder dialogWindow = new AlertDialog.Builder(MainActivity.this);
-
-        dialogWindow.setTitle(getResources().getString(R.string.title_about_application));
-        dialogWindow.setMessage(getResources().getString(R.string.msg_about_application));
-
-        dialogWindow.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        dialogWindow.show(); // Display the dialogue window
+        tooltipHelper.showInfoDialog(getResources().getString(R.string.title_about_application),
+                getResources().getString(R.string.msg_about_application));
     }
 
     /**
@@ -138,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         .withCrashReplayOptedIn(sessionReplayEnabled)
                         .build()
                 );
+
 
                 // Apply masking configs
                 DynatraceSessionReplay.setConfiguration(Configuration.builder()

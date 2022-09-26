@@ -16,4 +16,29 @@
     <dimen name="text_size_med">18sp</dimen>
     <dimen name="text_size_small">15sp</dimen>
     <dimen name="text_size_tiny">12sp</dimen>
+
+    <dimen name="small_50">4dp</dimen>
+    <dimen name="small_100">8dp</dimen>
+    <dimen name="normal_100">16dp</dimen>
+    <dimen name="normal_125">20dp</dimen>
+    <dimen name="normal_150">24dp</dimen>
+    <dimen name="normal_175">28dp</dimen>
+    <dimen name="large_100">32dp</dimen>
+    <dimen name="large_125">40dp</dimen>
+    <dimen name="large_150">48dp</dimen>
+    <dimen name="large_175">56dp</dimen>
+    <dimen name="large_200">64dp</dimen>
+
+
+    <dimen name="text_small_50">4dp</dimen>
+    <dimen name="text_small_100">8dp</dimen>
+    <dimen name="text_normal_100">12dp</dimen>
+    <dimen name="text_normal_125">15dp</dimen>
+    <dimen name="text_normal_150">18dp</dimen>
+    <dimen name="text_normal_175">21dp</dimen>
+    <dimen name="text_large_100">24dp</dimen>
+    <dimen name="text_large_125">30dp</dimen>
+    <dimen name="text_large_150">36dp</dimen>
+    <dimen name="text_large_175">42dp</dimen>
+    <dimen name="text_large_200">48dp</dimen>
 </resources>

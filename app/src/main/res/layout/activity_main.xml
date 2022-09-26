@@ -28,8 +28,8 @@
                     style="?buttonDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_about_application"
-                    android:onClick="onAboutApplication"/>
+                    android:onClick="onAboutApplication"
+                    android:text="@string/title_about_application" />
 
                 <Button
                     android:id="@+id/button_user_data"

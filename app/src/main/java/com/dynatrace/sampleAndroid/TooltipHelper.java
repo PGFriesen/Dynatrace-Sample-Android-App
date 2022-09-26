@@ -20,32 +20,6 @@ public class TooltipHelper {
     }
 
     /**
-     * Helper function to determine if an Item in the ListView should have a clickable button
-     *
-     * @param s String value passed from ListView Adapter for a list item
-     * @return true if the Item should have a button
-     */
-    public Boolean hasClickable(String s){
-        switch(s){
-            case "Adjust DataCollectionLevel with SDK":
-            case "User Actions":
-            case "Web Requests":
-            case "Mobile SDK":
-            case "Dynatrace Android Gradle Plugin":
-            case "200 User Action limit reached":
-            case "Application is terminated":
-            case "Cluster Activegate":
-            case "Environment Activegate":
-            case "Instrumented OneAgent Webserver":
-            case "Back-end Webserver process must be instrumented with a OneAgent":
-            case"Try disabling instrumentation of sensors depending on issue":
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    /**
      * Getter for the immutable pair of strings with the dialog window title and message
      */
     public Pair<String, String> getTooltip(String tag){

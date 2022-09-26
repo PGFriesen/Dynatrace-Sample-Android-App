@@ -137,8 +137,8 @@
             <Button
                 android:id="@+id/button_web_request_waterfall"
                 style="?buttonDefault"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/linear_layout_request_delay"
                 android:onClick="onButtonTouch"
                 android:text="@string/dt_waterfall_request" />
@@ -196,8 +196,8 @@
             <Button
                 android:id="@+id/button_crash_application"
                 style="?buttonDefault"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/button_about_crash_reporting"
                 android:onClick="onButtonTouch"
                 android:text="@string/dt_crash_app" />
